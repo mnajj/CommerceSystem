@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CommerceModelStoreContainer" CdmEntityContainer="CommerceEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="CommerceModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+          <ScalarProperty Name="Cus_Fname" ColumnName="Cus_Fname" />
+          <ScalarProperty Name="Cus_Lname" ColumnName="Cus_Lname" />
+          <ScalarProperty Name="Cus_Phone" ColumnName="Cus_Phone" />
+          <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+          <ScalarProperty Name="Cus_Address" ColumnName="Cus_Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dism_Prod">
+      <EntityTypeMapping TypeName="CommerceModel.Dism_Prod">
+        <MappingFragment StoreEntitySet="Dism_Prod">
+          <ScalarProperty Name="Dism_Id" ColumnName="Dism_Id" />
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dismissals">
+      <EntityTypeMapping TypeName="CommerceModel.Dismissal">
+        <MappingFragment StoreEntitySet="Dismissal">
+          <ScalarProperty Name="Dism_Id" ColumnName="Dism_Id" />
+          <ScalarProperty Name="Store_Id" ColumnName="Store_Id" />
+          <ScalarProperty Name="Cus_id" ColumnName="Cus_id" />
+          <ScalarProperty Name="Dism_date" ColumnName="Dism_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="CommerceModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+          <ScalarProperty Name="Model_Year" ColumnName="Model_Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="CommerceModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Stf_Id" ColumnName="Stf_Id" />
+          <ScalarProperty Name="Stf_Fname" ColumnName="Stf_Fname" />
+          <ScalarProperty Name="Stf_Lname" ColumnName="Stf_Lname" />
+          <ScalarProperty Name="Stf_Email" ColumnName="Stf_Email" />
+          <ScalarProperty Name="Stf_Phone" ColumnName="Stf_Phone" />
+          <ScalarProperty Name="Store_Id" ColumnName="Store_Id" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="CommerceModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="Store_Id" ColumnName="Store_Id" />
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="CommerceModel.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="Store_Id" ColumnName="Store_Id" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Store_Phone" ColumnName="Store_Phone" />
+          <ScalarProperty Name="Store_Email" ColumnName="Store_Email" />
+          <ScalarProperty Name="Store_Address" ColumnName="Store_Address" />
+          <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplied_Prod">
+      <EntityTypeMapping TypeName="CommerceModel.Supplied_Prod">
+        <MappingFragment StoreEntitySet="Supplied_Prod">
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="SupPerm_Id" ColumnName="SupPerm_Id" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuppliePermissions">
+      <EntityTypeMapping TypeName="CommerceModel.SuppliePermission">
+        <MappingFragment StoreEntitySet="SuppliePermission">
+          <ScalarProperty Name="SupPerm_Id" ColumnName="SupPerm_Id" />
+          <ScalarProperty Name="Store_Id" ColumnName="Store_Id" />
+          <ScalarProperty Name="Sup_Id" ColumnName="Sup_Id" />
+          <ScalarProperty Name="SupPerm_Date" ColumnName="SupPerm_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="CommerceModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Sup_Id" ColumnName="Sup_Id" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+          <ScalarProperty Name="Sup_Phone" ColumnName="Sup_Phone" />
+          <ScalarProperty Name="Sup_Fax" ColumnName="Sup_Fax" />
+          <ScalarProperty Name="Sup_Telephone" ColumnName="Sup_Telephone" />
+          <ScalarProperty Name="Sup_Mail" ColumnName="Sup_Mail" />
+          <ScalarProperty Name="Sup_Site" ColumnName="Sup_Site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CommerceModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="CommerceModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Prod_Unit" TypeName="CommerceModel.Prod_Unit" StoreEntitySet="Prod_Unit">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+      </EndProperty>
+      <EndProperty Name="Unit">
+        <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

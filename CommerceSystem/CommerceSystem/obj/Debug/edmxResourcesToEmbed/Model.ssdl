@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Cus_Id" />
+    </Key>
+    <Property Name="Cus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cus_Fname" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cus_Lname" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cus_Phone" Type="varchar" MaxLength="25" />
+    <Property Name="Cus_Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cus_Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Dism_Prod">
+    <Key>
+      <PropertyRef Name="Dism_Id" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Dism_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="int" />
+  </EntityType>
+  <EntityType Name="Dismissal">
+    <Key>
+      <PropertyRef Name="Dism_Id" />
+    </Key>
+    <Property Name="Dism_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Store_Id" Type="int" Nullable="false" />
+    <Property Name="Cus_id" Type="int" Nullable="false" />
+    <Property Name="Dism_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Prod_Unit">
+    <Key>
+      <PropertyRef Name="Unit_Id" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Unit_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prod_Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model_Year" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Stf_Id" />
+    </Key>
+    <Property Name="Stf_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stf_Fname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Stf_Lname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Stf_Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Stf_Phone" Type="varchar" MaxLength="25" />
+    <Property Name="Store_Id" Type="int" Nullable="false" />
+    <Property Name="Manager_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="Store_Id" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Store_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="int" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Store_Id" />
+    </Key>
+    <Property Name="Store_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Store_Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Store_Phone" Type="varchar" MaxLength="25" />
+    <Property Name="Store_Email" Type="varchar" MaxLength="255" />
+    <Property Name="Store_Address" Type="varchar" MaxLength="255" />
+    <Property Name="Manager_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Supplied_Prod">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+      <PropertyRef Name="SupPerm_Id" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="SupPerm_Id" Type="int" Nullable="false" />
+    <Property Name="Production_Date" Type="date" />
+    <Property Name="Expiry" Type="int" />
+    <Property Name="Qty" Type="int" />
+  </EntityType>
+  <EntityType Name="SuppliePermission">
+    <Key>
+      <PropertyRef Name="SupPerm_Id" />
+    </Key>
+    <Property Name="SupPerm_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Store_Id" Type="int" />
+    <Property Name="Sup_Id" Type="int" />
+    <Property Name="SupPerm_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Sup_Id" />
+    </Key>
+    <Property Name="Sup_Id" Type="int" Nullable="false" />
+    <Property Name="Sup_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Sup_Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Sup_Fax" Type="varchar" MaxLength="50" />
+    <Property Name="Sup_Telephone" Type="varchar" MaxLength="50" />
+    <Property Name="Sup_Mail" Type="varchar" MaxLength="50" />
+    <Property Name="Sup_Site" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Unit_Id" />
+    </Key>
+    <Property Name="Unit_Id" Type="int" Nullable="false" />
+    <Property Name="Unit_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__staffs__manager___31EC6D26">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="Staff1" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Stf_Id" />
+      </Principal>
+      <Dependent Role="Staff1">
+        <PropertyRef Name="Manager_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__staffs__store_id__30F848ED">
+    <End Role="Store" Type="Self.Store" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Store_Id" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stocks__product___3F466844">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stocks__store_id__3E52440B">
+    <End Role="Store" Type="Self.Store" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Store_Id" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dism_Prod_Dismissal">
+    <End Role="Dismissal" Type="Self.Dismissal" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dism_Prod" Type="Self.Dism_Prod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dismissal">
+        <PropertyRef Name="Dism_Id" />
+      </Principal>
+      <Dependent Role="Dism_Prod">
+        <PropertyRef Name="Dism_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dism_Prod_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dism_Prod" Type="Self.Dism_Prod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Dism_Prod">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dismissal_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dismissal" Type="Self.Dismissal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Cus_Id" />
+      </Principal>
+      <Dependent Role="Dismissal">
+        <PropertyRef Name="Cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dismissal_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dismissal" Type="Self.Dismissal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Store_Id" />
+      </Principal>
+      <Dependent Role="Dismissal">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Unit_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prod_Unit" Type="Self.Prod_Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Prod_Unit">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prod_Unit_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prod_Unit" Type="Self.Prod_Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Prod_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stores_staffs">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Stf_Id" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="Manager_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplie_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SuppliePermission" Type="Self.SuppliePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Store_Id" />
+      </Principal>
+      <Dependent Role="SuppliePermission">
+        <PropertyRef Name="Store_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplie_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SuppliePermission" Type="Self.SuppliePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Id" />
+      </Principal>
+      <Dependent Role="SuppliePermission">
+        <PropertyRef Name="Sup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplied_Prod_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supplied_Prod" Type="Self.Supplied_Prod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Supplied_Prod">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplied_Prod_SuppliePermission">
+    <End Role="SuppliePermission" Type="Self.SuppliePermission" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supplied_Prod" Type="Self.Supplied_Prod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuppliePermission">
+        <PropertyRef Name="SupPerm_Id" />
+      </Principal>
+      <Dependent Role="Supplied_Prod">
+        <PropertyRef Name="SupPerm_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CommerceModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dism_Prod" EntityType="Self.Dism_Prod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dismissal" EntityType="Self.Dismissal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prod_Unit" EntityType="Self.Prod_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplied_Prod" EntityType="Self.Supplied_Prod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SuppliePermission" EntityType="Self.SuppliePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__staffs__manager___31EC6D26" Association="Self.FK__staffs__manager___31EC6D26">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Staff1" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__staffs__store_id__30F848ED" Association="Self.FK__staffs__store_id__30F848ED">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stocks__product___3F466844" Association="Self.FK__stocks__product___3F466844">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stocks__store_id__3E52440B" Association="Self.FK__stocks__store_id__3E52440B">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dism_Prod_Dismissal" Association="Self.FK_Dism_Prod_Dismissal">
+      <End Role="Dismissal" EntitySet="Dismissal" />
+      <End Role="Dism_Prod" EntitySet="Dism_Prod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dism_Prod_Product" Association="Self.FK_Dism_Prod_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Dism_Prod" EntitySet="Dism_Prod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dismissal_Customer" Association="Self.FK_Dismissal_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Dismissal" EntitySet="Dismissal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dismissal_Store" Association="Self.FK_Dismissal_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Dismissal" EntitySet="Dismissal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Unit_Product" Association="Self.FK_Prod_Unit_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Prod_Unit" EntitySet="Prod_Unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prod_Unit_Unit" Association="Self.FK_Prod_Unit_Unit">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Prod_Unit" EntitySet="Prod_Unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stores_staffs" Association="Self.FK_stores_staffs">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Store" EntitySet="Store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplie_Store" Association="Self.FK_Supplie_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="SuppliePermission" EntitySet="SuppliePermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplie_Supplier" Association="Self.FK_Supplie_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="SuppliePermission" EntitySet="SuppliePermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplied_Prod_Product" Association="Self.FK_Supplied_Prod_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Supplied_Prod" EntitySet="Supplied_Prod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplied_Prod_SuppliePermission" Association="Self.FK_Supplied_Prod_SuppliePermission">
+      <End Role="SuppliePermission" EntitySet="SuppliePermission" />
+      <End Role="Supplied_Prod" EntitySet="Supplied_Prod" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
