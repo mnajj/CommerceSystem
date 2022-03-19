@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
 			this.Update = new System.Windows.Forms.Button();
@@ -113,9 +114,23 @@
 			this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPage6 = new System.Windows.Forms.TabPage();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.AddDismBtn = new System.Windows.Forms.Button();
+			this.DismList = new System.Windows.Forms.ListView();
+			this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.tabPage7 = new System.Windows.Forms.TabPage();
+			this.ProdPeriodBtn = new System.Windows.Forms.Button();
+			this.GenerateStoresReportBtn = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
+			this.PassedProdBtn = new System.Windows.Forms.Button();
+			this.ExpirationBtn = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.tabControl1.SuspendLayout();
+			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tabPage3.SuspendLayout();
@@ -126,8 +141,10 @@
 			this.tabPage4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.tabPage5.SuspendLayout();
-			this.tabPage1.SuspendLayout();
+			this.tabPage6.SuspendLayout();
+			this.tabPage7.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -138,12 +155,25 @@
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
 			this.tabControl1.Controls.Add(this.tabPage6);
+			this.tabControl1.Controls.Add(this.tabPage7);
 			this.tabControl1.Location = new System.Drawing.Point(1, 1);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(797, 450);
 			this.tabControl1.TabIndex = 0;
 			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.BackColor = System.Drawing.Color.White;
+			this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.tabPage1.Controls.Add(this.pictureBox1);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(789, 424);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "Home";
 			// 
 			// tabPage2
 			// 
@@ -938,6 +968,8 @@
 			// 
 			// tabPage6
 			// 
+			this.tabPage6.Controls.Add(this.AddDismBtn);
+			this.tabPage6.Controls.Add(this.DismList);
 			this.tabPage6.Location = new System.Drawing.Point(4, 22);
 			this.tabPage6.Name = "tabPage6";
 			this.tabPage6.Size = new System.Drawing.Size(789, 424);
@@ -945,17 +977,128 @@
 			this.tabPage6.Text = "Dismissal 🚚";
 			this.tabPage6.UseVisualStyleBackColor = true;
 			// 
-			// tabPage1
+			// AddDismBtn
 			// 
-			this.tabPage1.BackColor = System.Drawing.Color.White;
-			this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.tabPage1.Controls.Add(this.pictureBox1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(789, 424);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Home";
+			this.AddDismBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
+			this.AddDismBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.AddDismBtn.ForeColor = System.Drawing.Color.White;
+			this.AddDismBtn.Location = new System.Drawing.Point(723, 385);
+			this.AddDismBtn.Name = "AddDismBtn";
+			this.AddDismBtn.Size = new System.Drawing.Size(61, 35);
+			this.AddDismBtn.TabIndex = 31;
+			this.AddDismBtn.Text = "Add";
+			this.AddDismBtn.UseVisualStyleBackColor = false;
+			this.AddDismBtn.Click += new System.EventHandler(this.AddDismBtn_Click);
+			// 
+			// DismList
+			// 
+			this.DismList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader20,
+            this.columnHeader22,
+            this.columnHeader23,
+            this.columnHeader24,
+            this.columnHeader25});
+			this.DismList.FullRowSelect = true;
+			this.DismList.HideSelection = false;
+			this.DismList.Location = new System.Drawing.Point(2, 3);
+			this.DismList.Name = "DismList";
+			this.DismList.Size = new System.Drawing.Size(784, 418);
+			this.DismList.TabIndex = 30;
+			this.DismList.UseCompatibleStateImageBehavior = false;
+			this.DismList.View = System.Windows.Forms.View.Details;
+			this.DismList.Click += new System.EventHandler(this.DismList_Click);
+			// 
+			// columnHeader20
+			// 
+			this.columnHeader20.Text = "Id";
+			this.columnHeader20.Width = 38;
+			// 
+			// columnHeader22
+			// 
+			this.columnHeader22.Text = "Store";
+			this.columnHeader22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.columnHeader22.Width = 100;
+			// 
+			// columnHeader23
+			// 
+			this.columnHeader23.Text = "Customer";
+			this.columnHeader23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// columnHeader24
+			// 
+			this.columnHeader24.Text = "Date";
+			this.columnHeader24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// columnHeader25
+			// 
+			this.columnHeader25.Text = "Product - Qty";
+			this.columnHeader25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.columnHeader25.Width = 200;
+			// 
+			// tabPage7
+			// 
+			this.tabPage7.BackColor = System.Drawing.Color.White;
+			this.tabPage7.Controls.Add(this.ExpirationBtn);
+			this.tabPage7.Controls.Add(this.PassedProdBtn);
+			this.tabPage7.Controls.Add(this.ProdPeriodBtn);
+			this.tabPage7.Controls.Add(this.pictureBox2);
+			this.tabPage7.Controls.Add(this.GenerateStoresReportBtn);
+			this.tabPage7.Controls.Add(this.button3);
+			this.tabPage7.Location = new System.Drawing.Point(4, 22);
+			this.tabPage7.Name = "tabPage7";
+			this.tabPage7.Size = new System.Drawing.Size(789, 424);
+			this.tabPage7.TabIndex = 6;
+			this.tabPage7.Text = "Reports 📄";
+			// 
+			// ProdPeriodBtn
+			// 
+			this.ProdPeriodBtn.Location = new System.Drawing.Point(240, 64);
+			this.ProdPeriodBtn.Name = "ProdPeriodBtn";
+			this.ProdPeriodBtn.Size = new System.Drawing.Size(316, 23);
+			this.ProdPeriodBtn.TabIndex = 3;
+			this.ProdPeriodBtn.Text = "Procucts During Specific Period Report";
+			this.ProdPeriodBtn.UseVisualStyleBackColor = true;
+			this.ProdPeriodBtn.Click += new System.EventHandler(this.ProdPeriodBtn_Click);
+			// 
+			// GenerateStoresReportBtn
+			// 
+			this.GenerateStoresReportBtn.Location = new System.Drawing.Point(240, 35);
+			this.GenerateStoresReportBtn.Name = "GenerateStoresReportBtn";
+			this.GenerateStoresReportBtn.Size = new System.Drawing.Size(143, 23);
+			this.GenerateStoresReportBtn.TabIndex = 1;
+			this.GenerateStoresReportBtn.Text = "Stores Report";
+			this.GenerateStoresReportBtn.UseVisualStyleBackColor = true;
+			this.GenerateStoresReportBtn.Click += new System.EventHandler(this.GenerateStoresReportBtn_Click);
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(413, 35);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(143, 23);
+			this.button3.TabIndex = 0;
+			this.button3.Text = "Stores Products Report";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
+			// PassedProdBtn
+			// 
+			this.PassedProdBtn.Location = new System.Drawing.Point(106, 93);
+			this.PassedProdBtn.Name = "PassedProdBtn";
+			this.PassedProdBtn.Size = new System.Drawing.Size(316, 23);
+			this.PassedProdBtn.TabIndex = 4;
+			this.PassedProdBtn.Text = "A Report on Items That Have Passed a Period of Time in Stores";
+			this.PassedProdBtn.UseVisualStyleBackColor = true;
+			this.PassedProdBtn.Click += new System.EventHandler(this.PassedProdBtn_Click);
+			// 
+			// ExpirationBtn
+			// 
+			this.ExpirationBtn.Location = new System.Drawing.Point(428, 93);
+			this.ExpirationBtn.Name = "ExpirationBtn";
+			this.ExpirationBtn.Size = new System.Drawing.Size(192, 23);
+			this.ExpirationBtn.TabIndex = 5;
+			this.ExpirationBtn.Text = "Items That Are Close to Expiration";
+			this.ExpirationBtn.UseVisualStyleBackColor = true;
+			this.ExpirationBtn.Click += new System.EventHandler(this.ExpirationBtn_Click);
 			// 
 			// pictureBox1
 			// 
@@ -967,6 +1110,16 @@
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = global::CommerceSystem.Properties.Resources._21a36d7399ae3f5f361c64493dcb3e97;
+			this.pictureBox2.Location = new System.Drawing.Point(-67, 128);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(916, 300);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox2.TabIndex = 2;
+			this.pictureBox2.TabStop = false;
+			// 
 			// Home
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,6 +1129,7 @@
 			this.Name = "Home";
 			this.Text = "Home";
 			this.tabControl1.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -992,8 +1146,10 @@
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
+			this.tabPage6.ResumeLayout(false);
+			this.tabPage7.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1087,5 +1243,19 @@
 		private System.Windows.Forms.TabPage tabPage6;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Button AddDismBtn;
+		private System.Windows.Forms.ListView DismList;
+		private System.Windows.Forms.ColumnHeader columnHeader20;
+		private System.Windows.Forms.ColumnHeader columnHeader22;
+		private System.Windows.Forms.ColumnHeader columnHeader23;
+		private System.Windows.Forms.ColumnHeader columnHeader24;
+		private System.Windows.Forms.ColumnHeader columnHeader25;
+		private System.Windows.Forms.TabPage tabPage7;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.Button GenerateStoresReportBtn;
+		private System.Windows.Forms.Button ProdPeriodBtn;
+		private System.Windows.Forms.Button PassedProdBtn;
+		private System.Windows.Forms.Button ExpirationBtn;
 	}
 }

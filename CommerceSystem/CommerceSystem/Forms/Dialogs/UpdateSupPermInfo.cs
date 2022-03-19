@@ -74,12 +74,13 @@ namespace CommerceSystem.Forms.Dialogs
 
 		private void ProdNamesCombo_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			int supPermId = int.Parse(RecordData.SubItems[0].Text);
 			int prodId = Db.Products
 				.Where(p => p.Prod_Name == ProdNamesCombo.Text)
 				.Select(p => p.Prod_Id)
 				.FirstOrDefault();
 			var sup_prod = Db.Supplied_Prod
-				.Where(s => s.Prod_Id == prodId)
+				.Where(s => s.Prod_Id == prodId && s.SupPerm_Id == supPermId)
 				.FirstOrDefault();
 			if (sup_prod != null)
 			{
@@ -125,24 +126,29 @@ namespace CommerceSystem.Forms.Dialogs
 				ProdNamesCombo.Text = String.Empty;
 		}
 
-		/// Add New Product to Permission
-		private void UpdateProduct_Click(object sender, EventArgs e)
+		private void AddProductToPermission_Click(object sender, EventArgs e)
 		{
 			int prodId = Db.Products
-			.Where(p => p.Prod_Name == ProdNamesCombo.Text)
-			.Select(p => p.Prod_Id)
-			.FirstOrDefault();
+				.Where(p => p.Prod_Name == ProdNamesCombo.Text)
+				.Select(p => p.Prod_Id)
+				.FirstOrDefault();
 			var sup_prod = Db.Supplied_Prod
 				.Where(s => s.Prod_Id == prodId)
 				.FirstOrDefault();
+
+				int Prod_Id = Db.Products
+			.Where(p => p.Prod_Name == ProdNamesCombo.Text)
+			.Select(p => p.Prod_Id)
+			.FirstOrDefault();
+
+
+
 			if (sup_prod == null)
 			{
 				Supplied_Prod supplied_Prod = new Supplied_Prod()
 				{
-					Prod_Id = Db.Products
-					.Where(p => p.Prod_Name == ProdNamesCombo.Text)
-					.Select(p => p.Prod_Id)
-					.FirstOrDefault(),
+					SupPerm_Id = int.Parse(RecordData.SubItems[0].Text),
+					Prod_Id = Prod_Id,
 					Qty = int.Parse(ProdQtyFld.Text),
 					Production_Date = ProdProddateFld.Value,
 					Expiry = int.Parse(ProdExpiryFld.Text)
@@ -156,6 +162,49 @@ namespace CommerceSystem.Forms.Dialogs
 			{
 				MessageBox.Show("Product Already Exist in Permission Products List!");
 			}
+		}
+
+		private void UpdateSupPermbtn_Click(object sender, EventArgs e)
+		{
+			if(
+					StoresNamesCombo.Text != String.Empty
+					&& SupPermDateFld.Text != String.Empty
+					&& SuppliersNamesCombo.Text != String.Empty
+				)
+			{
+				int supPermId = int.Parse(RecordData.SubItems[0].Text);
+				var supPerm = Db.SuppliePermissions
+				.Where(s => s.SupPerm_Id == supPermId)
+				.FirstOrDefault();
+
+				int storeId = Db.Stores
+					.Where(s => s.Store_Name == StoresNamesCombo.Text)
+					.Select(s => s.Store_Id)
+					.FirstOrDefault();
+				DateTime permDate = SupPermDateFld.Value;
+				int supId = Db.Suppliers
+					.Where(s => s.Sup_Name == SuppliersNamesCombo.Text)
+					.Select(s => s.Sup_Id)
+					.FirstOrDefault();
+
+				supPerm.Store_Id = storeId;
+				supPerm.SupPerm_Date = permDate;
+				supPerm.Sup_Id = supId;
+				Db.SaveChanges();
+				ClearSupPermFields();
+				MessageBox.Show("Supplie Permission Info Updated Successfully");
+			}
+			else
+			{
+				MessageBox.Show("Some Supplie Permission Fields is Empty!");
+			}
+		}
+
+		private void ClearSupPermFields()
+		{
+			StoresNamesCombo.Text =
+			SupPermDateFld.Text =
+			SuppliersNamesCombo.Text = String.Empty;
 		}
 	}
 }

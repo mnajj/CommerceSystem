@@ -63,6 +63,16 @@ namespace CommerceSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _21a36d7399ae3f5f361c64493dcb3e97 {
+            get {
+                object obj = ResourceManager.GetObject("21a36d7399ae3f5f361c64493dcb3e97", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _470024_middle {
             get {
                 object obj = ResourceManager.GetObject("470024-middle", resourceCulture);

@@ -28,9 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SubmitSupPermbtn = new System.Windows.Forms.Button();
-			this.UpdateProduct = new System.Windows.Forms.Button();
+			this.UpdateSupPermbtn = new System.Windows.Forms.Button();
+			this.AddProductToPermission = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.UpdateProductInfo = new System.Windows.Forms.Button();
 			this.ProdExpiryFld = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.ProdProddateFld = new System.Windows.Forms.DateTimePicker();
@@ -45,38 +46,38 @@
 			this.label24 = new System.Windows.Forms.Label();
 			this.SuppliersNamesCombo = new System.Windows.Forms.ComboBox();
 			this.StoresNamesCombo = new System.Windows.Forms.ComboBox();
-			this.UpdateProductInfo = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// SubmitSupPermbtn
+			// UpdateSupPermbtn
 			// 
-			this.SubmitSupPermbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
-			this.SubmitSupPermbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SubmitSupPermbtn.ForeColor = System.Drawing.Color.White;
-			this.SubmitSupPermbtn.Location = new System.Drawing.Point(7, 256);
-			this.SubmitSupPermbtn.Name = "SubmitSupPermbtn";
-			this.SubmitSupPermbtn.Size = new System.Drawing.Size(380, 37);
-			this.SubmitSupPermbtn.TabIndex = 32;
-			this.SubmitSupPermbtn.Text = "Update Supplie Permission";
-			this.SubmitSupPermbtn.UseVisualStyleBackColor = false;
+			this.UpdateSupPermbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
+			this.UpdateSupPermbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.UpdateSupPermbtn.ForeColor = System.Drawing.Color.White;
+			this.UpdateSupPermbtn.Location = new System.Drawing.Point(7, 256);
+			this.UpdateSupPermbtn.Name = "UpdateSupPermbtn";
+			this.UpdateSupPermbtn.Size = new System.Drawing.Size(380, 37);
+			this.UpdateSupPermbtn.TabIndex = 32;
+			this.UpdateSupPermbtn.Text = "Update Supplie Permission";
+			this.UpdateSupPermbtn.UseVisualStyleBackColor = false;
+			this.UpdateSupPermbtn.Click += new System.EventHandler(this.UpdateSupPermbtn_Click);
 			// 
-			// UpdateProduct
+			// AddProductToPermission
 			// 
-			this.UpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
-			this.UpdateProduct.Location = new System.Drawing.Point(5, 131);
-			this.UpdateProduct.Name = "UpdateProduct";
-			this.UpdateProduct.Size = new System.Drawing.Size(177, 23);
-			this.UpdateProduct.TabIndex = 23;
-			this.UpdateProduct.Text = "Add Product To Permisson";
-			this.UpdateProduct.UseVisualStyleBackColor = false;
-			this.UpdateProduct.Click += new System.EventHandler(this.UpdateProduct_Click);
+			this.AddProductToPermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.AddProductToPermission.Location = new System.Drawing.Point(5, 131);
+			this.AddProductToPermission.Name = "AddProductToPermission";
+			this.AddProductToPermission.Size = new System.Drawing.Size(177, 23);
+			this.AddProductToPermission.TabIndex = 23;
+			this.AddProductToPermission.Text = "Add Product To Permisson";
+			this.AddProductToPermission.UseVisualStyleBackColor = false;
+			this.AddProductToPermission.Click += new System.EventHandler(this.AddProductToPermission_Click);
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
 			this.groupBox1.Controls.Add(this.UpdateProductInfo);
-			this.groupBox1.Controls.Add(this.UpdateProduct);
+			this.groupBox1.Controls.Add(this.AddProductToPermission);
 			this.groupBox1.Controls.Add(this.ProdExpiryFld);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.ProdProddateFld);
@@ -91,6 +92,17 @@
 			this.groupBox1.TabIndex = 31;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Products";
+			// 
+			// UpdateProductInfo
+			// 
+			this.UpdateProductInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.UpdateProductInfo.Location = new System.Drawing.Point(188, 131);
+			this.UpdateProductInfo.Name = "UpdateProductInfo";
+			this.UpdateProductInfo.Size = new System.Drawing.Size(186, 23);
+			this.UpdateProductInfo.TabIndex = 24;
+			this.UpdateProductInfo.Text = "Update Product";
+			this.UpdateProductInfo.UseVisualStyleBackColor = false;
+			this.UpdateProductInfo.Click += new System.EventHandler(this.UpdateProductInfo_Click);
 			// 
 			// ProdExpiryFld
 			// 
@@ -218,24 +230,13 @@
 			this.StoresNamesCombo.Size = new System.Drawing.Size(121, 21);
 			this.StoresNamesCombo.TabIndex = 26;
 			// 
-			// UpdateProductInfo
-			// 
-			this.UpdateProductInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
-			this.UpdateProductInfo.Location = new System.Drawing.Point(188, 131);
-			this.UpdateProductInfo.Name = "UpdateProductInfo";
-			this.UpdateProductInfo.Size = new System.Drawing.Size(186, 23);
-			this.UpdateProductInfo.TabIndex = 24;
-			this.UpdateProductInfo.Text = "Update Product";
-			this.UpdateProductInfo.UseVisualStyleBackColor = false;
-			this.UpdateProductInfo.Click += new System.EventHandler(this.UpdateProductInfo_Click);
-			// 
 			// UpdateSupPermInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(396, 294);
-			this.Controls.Add(this.SubmitSupPermbtn);
+			this.Controls.Add(this.UpdateSupPermbtn);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.SupPermDateFld);
@@ -254,8 +255,8 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button SubmitSupPermbtn;
-		private System.Windows.Forms.Button UpdateProduct;
+		private System.Windows.Forms.Button UpdateSupPermbtn;
+		private System.Windows.Forms.Button AddProductToPermission;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.TextBox ProdExpiryFld;
 		private System.Windows.Forms.Label label6;

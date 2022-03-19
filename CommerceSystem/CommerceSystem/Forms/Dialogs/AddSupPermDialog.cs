@@ -13,7 +13,7 @@ namespace CommerceSystem.Forms.Dialogs
 {
 	public partial class AddSupPermDialog : Form
 	{
-		public List<Supplied_Prod> Products { get; set; }
+		public List<Supplied_Prod> Products { get; set; } = new List<Supplied_Prod>();
 		public CommerceEntities Db { get; set; } = new CommerceEntities();
 
 		public AddSupPermDialog()
@@ -87,11 +87,20 @@ namespace CommerceSystem.Forms.Dialogs
 				};
 				this.Products.Add(prod);
 				MessageBox.Show("Product Added to Permission");
+				ClearProdFields();
 			}
 			else
 			{
 				MessageBox.Show("Some Fields is empty");
 			}
+		}
+
+		private void ClearProdFields()
+		{
+			ProdNamesCombo.Text =
+				ProdProddateFld.Text =
+				ProdQtyFld.Text =
+				ProdExpiryFld.Text = String.Empty;
 		}
 
 		private void SubmitSupPermbtn_Click(object sender, EventArgs e)
@@ -129,19 +138,25 @@ namespace CommerceSystem.Forms.Dialogs
 					this.Products.ToList().ForEach(p => p.SupPerm_Id = supPermId);
 					foreach (var prod in Products)
 					{
-						Db.Supplied_Prod.Add(prod);
+						var sup_prod = Db.Supplied_Prod
+							.Where(s => s.Prod_Id == prod.Prod_Id && s.SupPerm_Id == prod.SupPerm_Id)
+							.FirstOrDefault();
+						if(sup_prod == null)
+						{
+							Db.Supplied_Prod.Add(prod);
+						}
 					}
 					Db.SaveChanges();
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("You Shoukd Add 1 Product at Least!");
+					MessageBox.Show("You Should Add 1 Product at Least!");
 				}
 			}
 			else
 			{
-
+				MessageBox.Show("Some Permission Fields is Empty!");
 			}
 		}
 	}

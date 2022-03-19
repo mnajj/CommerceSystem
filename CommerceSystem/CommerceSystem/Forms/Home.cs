@@ -1,20 +1,28 @@
 ﻿using CommerceSystem.Forms.Dialogs;
 using CommerceSystem.Model;
+using Syncfusion.Pdf.Graphics;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Syncfusion.Pdf;
+using System.Diagnostics;
+using System.IO;
+using System.Drawing;
 
 namespace CommerceSystem
 {
 	public partial class Home : Form
 	{
 		public CommerceEntities Db { get; set; } = new CommerceEntities();
+
+		public List<int> RepStoresId { get; set; } = new List<int>();
+		public List<int> RepProductsId { get; set; } = new List<int>();
+		public DateTime RepFromDate { get; set; }
+		public DateTime RepToDate { get; set; }
+		public int RepTimePeriod { get; set; }
+		public int RepExpiration { get; set; }
 
 		public Home()
 		{
@@ -23,7 +31,7 @@ namespace CommerceSystem
 
 		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			switch(tabControl1.SelectedIndex)
+			switch (tabControl1.SelectedIndex)
 			{
 				case 0:
 					break;
@@ -39,12 +47,13 @@ namespace CommerceSystem
 				case 4:
 					DisplaySupPermsData();
 					break;
+				case 5:
+					DisplayDismissalData();
+					break;
+				case 6:
+					break;
 			}
 		}
-
-
-
-
 
 		#region Stores
 		private void DisplayStoresData()
@@ -83,7 +92,7 @@ namespace CommerceSystem
 
 		private void AddStoreBtn_Click(object sender, EventArgs e)
 		{
-			if(
+			if (
 					StorenameFld.Text != String.Empty
 					&& StorePhoneFld.Text != String.Empty
 					&& StoreMailFld.Text != String.Empty
@@ -159,7 +168,7 @@ namespace CommerceSystem
 
 		private void AddProductBtn_Click(object sender, EventArgs e)
 		{
-			if(
+			if (
 					ProdNameFld.Text != String.Empty
 					&& ProdNameFld.Text != String.Empty
 					&& StoresnamesCombo.Text != String.Empty
@@ -197,7 +206,7 @@ namespace CommerceSystem
 
 		private void ClearProdFields()
 		{
-			ProdIdFld.Text   =
+			ProdIdFld.Text =
 			ProdNameFld.Text =
 			ProdNameFld.Text =
 			StoresnamesCombo.Text =
@@ -206,7 +215,7 @@ namespace CommerceSystem
 
 		private void UpdateProdBtn_Click(object sender, EventArgs e)
 		{
-			if(
+			if (
 				ProdIdFld.Text != String.Empty
 				&& ProdNameFld.Text != String.Empty
 				&& ProdNameFld.Text != String.Empty
@@ -271,7 +280,7 @@ namespace CommerceSystem
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			if(ProdIdFld.Text != String.Empty)
+			if (ProdIdFld.Text != String.Empty)
 			{
 				int id = int.Parse(ProdIdFld.Text);
 				var product = Db.Products
@@ -312,7 +321,7 @@ namespace CommerceSystem
 
 		private void AddSupBtn_Click(object sender, EventArgs e)
 		{
-			if(
+			if (
 					SupNameFld.Text != String.Empty
 					&& SupPhoneFld.Text != String.Empty
 					&& SupFaxFld.Text != String.Empty
@@ -324,11 +333,11 @@ namespace CommerceSystem
 				Supplier sup = new Supplier()
 				{
 					Sup_Id = int.Parse(SupIdFld.Text),
-					Sup_Name = SupNameFld.Text ,
+					Sup_Name = SupNameFld.Text,
 					Sup_Phone = SupPhoneFld.Text,
 					Sup_Fax = SupFaxFld.Text,
-					Sup_Telephone = SupTeleFld.Text ,
-					Sup_Mail = SupMailFld.Text ,
+					Sup_Telephone = SupTeleFld.Text,
+					Sup_Mail = SupMailFld.Text,
 					Sup_Site = SupSiteFld.Text
 				};
 				Db.Suppliers.Add(sup);
@@ -357,11 +366,11 @@ namespace CommerceSystem
 				var sup = Db.Suppliers
 					.Where(s => s.Sup_Id == id)
 					.FirstOrDefault();
-				sup.Sup_Name = SupNameFld.Text ;
+				sup.Sup_Name = SupNameFld.Text;
 				sup.Sup_Phone = SupPhoneFld.Text;
-				sup.Sup_Fax = SupFaxFld.Text	 ;
-				sup.Sup_Telephone = SupTeleFld.Text ;
-				sup.Sup_Mail = SupMailFld.Text ;
+				sup.Sup_Fax = SupFaxFld.Text;
+				sup.Sup_Telephone = SupTeleFld.Text;
+				sup.Sup_Mail = SupMailFld.Text;
 				sup.Sup_Mail = SupSiteFld.Text;
 				Db.SaveChanges();
 				DisplaySuppliersData();
@@ -375,9 +384,9 @@ namespace CommerceSystem
 
 		private void DeleteSupBtn_Click(object sender, EventArgs e)
 		{
-			if(SupIdFld.Text != String.Empty)
+			if (SupIdFld.Text != String.Empty)
 			{
-				int id = int.Parse (SupIdFld.Text);
+				int id = int.Parse(SupIdFld.Text);
 				var sup = Db.Suppliers
 					.Where(s => s.Sup_Id == id)
 					.FirstOrDefault();
@@ -393,26 +402,26 @@ namespace CommerceSystem
 
 		private void ClearSupFields()
 		{
-			SupIdFld.Text    =
-			SupNameFld.Text  =
+			SupIdFld.Text =
+			SupNameFld.Text =
 			SupPhoneFld.Text =
-			SupFaxFld.Text 	 =
-			SupTeleFld.Text	 =
-			SupMailFld.Text	 =
-			SupSiteFld.Text	 = String.Empty;
+			SupFaxFld.Text =
+			SupTeleFld.Text =
+			SupMailFld.Text =
+			SupSiteFld.Text = String.Empty;
 		}
 		#endregion
 
 		#region Supplie Permissions
 		private void DisplaySupPermsData()
 		{
+			SupPermList.Items.Clear();
 			var sups = Db.SuppliePermissions
 				.Select(s => s)
 				.ToList();
 			foreach (var sup in sups)
 			{
 				string prodInfo = String.Empty;
-				//var prod_perm = sup.Supplied_Prod.Where(s => s.SupPerm_Id == sup.SupPerm_Id).FirstOrDefault();
 				var prod_perm = sup.Supplied_Prod.Where(s => s.SupPerm_Id == sup.SupPerm_Id).ToList();
 				if (prod_perm != null)
 				{
@@ -424,7 +433,7 @@ namespace CommerceSystem
 
 				string[] row =
 				{
-					sup.Store_Id.ToString(),
+					sup.SupPerm_Id.ToString(),
 					sup.Store.Store_Name,
 					sup.SupPerm_Date.Value.Date.ToString(),
 					sup.Supplier.Sup_Name,
@@ -439,6 +448,7 @@ namespace CommerceSystem
 		{
 			AddSupPermDialog addSupPermDialog = new AddSupPermDialog();
 			addSupPermDialog.ShowDialog();
+			DisplaySupPermsData();
 		}
 
 
@@ -465,8 +475,236 @@ namespace CommerceSystem
 				}
 			}
 		}
-
 		#endregion
-	}
 
+		#region Dismissals
+		private void DisplayDismissalData()
+		{
+			DismList.Items.Clear();
+			var disms = Db.Dismissals
+				.Select(s => s)
+				.ToList();
+			foreach (var dism in disms)
+			{
+				string prodInfo = String.Empty;
+				var prod_perm = dism.Dism_Prod.Where(d => d.Dism_Id == dism.Dism_Id).ToList();
+				if (prod_perm != null)
+				{
+					foreach (var prod in prod_perm)
+					{
+						prodInfo += $"{Db.Products.Where(p => p.Prod_Id == prod.Prod_Id).Select(p => p.Prod_Name).FirstOrDefault()}, {prod.Qty}, {Environment.NewLine}";
+					}
+					string[] row =
+					{
+						dism.Dism_Id.ToString(),
+						dism.Store.Store_Name,
+						$"{dism.Customer.Cus_Fname} {dism.Customer.Cus_Lname}",
+						dism.Dism_date.ToString(),
+						prodInfo
+					};
+					ListViewItem listViewItem = new ListViewItem(row);
+					DismList.Items.Add(listViewItem);
+				}
+			}
+		}
+
+		private void AddDismBtn_Click(object sender, EventArgs e)
+		{
+			AddDismPerm addDismPerm = new AddDismPerm();
+			addDismPerm.ShowDialog();
+			DisplayDismissalData();
+		}
+
+
+		private void DismList_Click(object sender, EventArgs e)
+		{
+			if (DismList.SelectedItems.Count > 0)
+			{
+				UpdateOrDeleteDialog updateOrDeleteDialog = new UpdateOrDeleteDialog();
+				DialogResult dlgRes = updateOrDeleteDialog.ShowDialog();
+				if (dlgRes == DialogResult.OK)
+				{
+					UpdateDismPerm updateDismPerm = new UpdateDismPerm(DismList.SelectedItems[0]);
+					updateDismPerm.ShowDialog();
+					DisplayDismissalData();
+				}
+				else
+				{
+					int dismId = int.Parse(DismList.SelectedItems[0].SubItems[0].Text);
+					var dism = Db.Dismissals
+						.Where(s => s.Dism_Id == dismId)
+						.FirstOrDefault();
+					Db.Dismissals.Remove(dism);
+					Db.SaveChanges();
+					DisplayDismissalData();
+				}
+			}
+		}
+		#endregion
+
+		#region Reports
+		private void button3_Click(object sender, EventArgs e)
+		{
+			SelectStores selectStores = new SelectStores(this);
+			selectStores.ShowDialog();
+			string repData = string.Empty;
+			RepStoresId = RepStoresId.Distinct().ToList();
+			foreach (var id in RepStoresId)
+			{
+				string storeName = Db.Stores
+					.Where(s => s.Store_Id == id)
+					.Select(s => s.Store_Name)
+					.FirstOrDefault();
+				repData += $"Store: {storeName}\nStocks:\n";
+				var stocks = Db.Stocks
+					.Where(s => s.Store_Id == id)
+					.ToList();
+				foreach (var stock in stocks)
+				{
+					repData += $"{stock.Product.Prod_Name}           {stock.Qty}\n";
+				}
+				repData += "******************************\n";
+				ConvertDataToPdfFile(repData);
+			}
+		}
+
+		private void ConvertDataToPdfFile(string data)
+		{
+			PdfDocument pdfDoc = new PdfDocument();
+			PdfPage page = pdfDoc.Pages.Add();
+			PdfGraphics graphics = page.Graphics;
+			PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+			PdfStringFormat format = new PdfStringFormat();
+			format.Alignment = PdfTextAlignment.Justify;
+			format.LineAlignment = PdfVerticalAlignment.Top;
+			format.ParagraphIndent = 10f;
+			graphics.DrawString(data, font, PdfBrushes.Black, new RectangleF(new PointF(0, 0), page.GetClientSize()), format);
+			try
+			{
+				File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "Report.pdf"));
+				pdfDoc.Save("Report.pdf");
+				pdfDoc.Close(true);
+				Process.Start("Report.pdf");
+			}
+			catch (Exception ex) { }
+			RepStoresId.Clear();
+		}
+
+		private void GenerateStoresReportBtn_Click(object sender, EventArgs e)
+		{
+			var storesId = Db.Stores
+				.Select(s => s.Store_Id)
+				.ToList();
+			string repData = String.Empty;
+			foreach (var id in storesId)
+			{
+				string storeName = Db.Stores
+					.Where(s => s.Store_Id == id)
+					.Select(s => s.Store_Name)
+					.FirstOrDefault();
+				repData += $"Store: {storeName}\nStocks:\n";
+				var stocks = Db.Stocks
+					.Where(s => s.Store_Id == id)
+					.ToList();
+				foreach (var stock in stocks)
+				{
+					repData += $"{stock.Product.Prod_Name}           {stock.Qty}\n";
+				}
+				repData += "******************************\n";
+			}
+			ConvertDataToPdfFile(repData);
+		}
+
+		private void ProdPeriodBtn_Click(object sender, EventArgs e)
+		{
+			SelectProductInPeriod selectProductInPeriod = new SelectProductInPeriod(this);
+			selectProductInPeriod.ShowDialog();
+			String repData = String.Empty;
+			RepProductsId = RepProductsId.Distinct().ToList();
+			foreach(var id in RepProductsId)
+			{
+				var prod = Db.Products
+					.Where(p => p.Prod_Id == id)
+					.FirstOrDefault();
+				repData += $"Product: {prod.Prod_Name}\n";
+
+				var sups = Db.Supplied_Prod
+					.Where(s => s.Prod_Id == id)
+					.ToList();
+				var disms = Db.Dism_Prod
+					.Where(s => s.Prod_Id == id)
+					.ToList();
+				if(sups.Count > 0)
+				{
+					repData += $"  1- Supplies Permissions:\n    Permisson Id    Store    Supplier    Date\n";
+					foreach (var sup in sups)
+					{
+						if (sup.SuppliePermission.SupPerm_Date > RepFromDate
+							&& sup.SuppliePermission.SupPerm_Date < RepToDate
+							)
+						{
+							repData += $"{sup.SupPerm_Id}   {sup.SuppliePermission.Store.Store_Name}   {sup.SuppliePermission.Supplier.Sup_Name}    {sup.SuppliePermission.SupPerm_Date.Value.Date}";
+						}
+					}
+				}
+				if (disms.Count > 0)
+				{
+					repData += $"  2- Dismissals:\n    Dismissal Id    Store    Customer    Date\n";
+					foreach (var dis in disms)
+					{
+						if (dis.Dismissal.Dism_date > RepFromDate
+							&& dis.Dismissal.Dism_date < RepToDate
+							)
+						{
+							repData += $"{dis.Dismissal.Dism_Id}   {dis.Dismissal.Store.Store_Name}   {dis.Dismissal.Customer.Cus_Fname}    {dis.Dismissal.Dism_date.Value.Date}";
+						}
+					}
+				}
+				repData += "******************************\n";
+			}
+			ConvertDataToPdfFile(repData);
+		}
+
+
+		private void PassedProdBtn_Click(object sender, EventArgs e)
+		{
+			SelectTimePeriod selectTimePeriod = new SelectTimePeriod(this);
+			selectTimePeriod.ShowDialog();
+			string repData = "Products That Have Passed a Period of Time in Stores\n";
+			repData += "Product    Store    Entry Date\n";
+
+			foreach(var p in Db.Supplied_Prod)
+			{
+				int period = ((DateTime.Now.Year - p.SuppliePermission.SupPerm_Date.Value.Year) * 12)
+					+ DateTime.Now.Month - p.SuppliePermission.SupPerm_Date.Value.Month;
+				if (period > RepTimePeriod)
+				{
+					repData += $"- {p.Product.Prod_Name}    {p.SuppliePermission.Store.Store_Name}    {p.SuppliePermission.SupPerm_Date.Value.ToString("dd/MM/yyyy")}\n";
+				}
+			}
+			ConvertDataToPdfFile(repData);
+		}
+
+
+		private void ExpirationBtn_Click(object sender, EventArgs e)
+		{
+			SelectTimePeriod selectTimePeriod = new SelectTimePeriod(this, true);
+			selectTimePeriod.ShowDialog();
+			string repData = "Items That Are Close to Expiration\n";
+			repData += "Product    Store    Producation Date   Expiry(Mth)\n";
+			foreach (var p in Db.Supplied_Prod)
+			{
+				DateTime expDate = p.Production_Date.Value.AddMonths(p.Expiry.Value);
+				int restMth = ((expDate.Year - p.Production_Date.Value.Year) * 12)
+					+ expDate.Month - p.Production_Date.Value.Month;
+				if (restMth == RepExpiration)
+				{
+					repData += $"- {p.Product.Prod_Name}    {p.SuppliePermission.Store.Store_Name}    {p.Production_Date.Value.ToString("dd/MM/yyyy")}   {p.Expiry}\n";
+				}
+			}
+			ConvertDataToPdfFile(repData);
+		}
+		#endregion
+
+	}
 }

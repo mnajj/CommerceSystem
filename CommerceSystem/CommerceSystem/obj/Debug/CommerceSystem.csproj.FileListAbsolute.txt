@@ -17,3 +17,14 @@ D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\Commerce
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.AddSupPermDialog.resources
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.UpdateOrDeleteDialog.resources
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.UpdateSupPermInfo.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.AddDismPerm.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.UpdateDismPerm.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.SelectStores.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Compression.Base.dll
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Licensing.dll
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Pdf.Base.dll
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\System.Text.Encoding.CodePages.dll
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Compression.Base.xml
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Pdf.Base.xml
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.SelectProductInPeriod.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.SelectTimePeriod.resources
