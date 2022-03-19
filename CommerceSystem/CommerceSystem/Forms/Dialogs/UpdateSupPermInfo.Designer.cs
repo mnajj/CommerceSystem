@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.SubmitSupPermbtn = new System.Windows.Forms.Button();
-			this.AddProduct = new System.Windows.Forms.Button();
+			this.UpdateProduct = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.ProdExpiryFld = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
 			this.label24 = new System.Windows.Forms.Label();
 			this.SuppliersNamesCombo = new System.Windows.Forms.ComboBox();
 			this.StoresNamesCombo = new System.Windows.Forms.ComboBox();
+			this.UpdateProductInfo = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -60,20 +61,22 @@
 			this.SubmitSupPermbtn.Text = "Update Supplie Permission";
 			this.SubmitSupPermbtn.UseVisualStyleBackColor = false;
 			// 
-			// AddProduct
+			// UpdateProduct
 			// 
-			this.AddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
-			this.AddProduct.Location = new System.Drawing.Point(78, 130);
-			this.AddProduct.Name = "AddProduct";
-			this.AddProduct.Size = new System.Drawing.Size(232, 23);
-			this.AddProduct.TabIndex = 23;
-			this.AddProduct.Text = "Update Product";
-			this.AddProduct.UseVisualStyleBackColor = false;
+			this.UpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.UpdateProduct.Location = new System.Drawing.Point(5, 131);
+			this.UpdateProduct.Name = "UpdateProduct";
+			this.UpdateProduct.Size = new System.Drawing.Size(177, 23);
+			this.UpdateProduct.TabIndex = 23;
+			this.UpdateProduct.Text = "Add Product To Permisson";
+			this.UpdateProduct.UseVisualStyleBackColor = false;
+			this.UpdateProduct.Click += new System.EventHandler(this.UpdateProduct_Click);
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
-			this.groupBox1.Controls.Add(this.AddProduct);
+			this.groupBox1.Controls.Add(this.UpdateProductInfo);
+			this.groupBox1.Controls.Add(this.UpdateProduct);
 			this.groupBox1.Controls.Add(this.ProdExpiryFld);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.ProdProddateFld);
@@ -147,6 +150,7 @@
 			this.ProdNamesCombo.Name = "ProdNamesCombo";
 			this.ProdNamesCombo.Size = new System.Drawing.Size(121, 21);
 			this.ProdNamesCombo.TabIndex = 18;
+			this.ProdNamesCombo.SelectedIndexChanged += new System.EventHandler(this.ProdNamesCombo_SelectedIndexChanged);
 			// 
 			// label3
 			// 
@@ -214,6 +218,17 @@
 			this.StoresNamesCombo.Size = new System.Drawing.Size(121, 21);
 			this.StoresNamesCombo.TabIndex = 26;
 			// 
+			// UpdateProductInfo
+			// 
+			this.UpdateProductInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.UpdateProductInfo.Location = new System.Drawing.Point(188, 131);
+			this.UpdateProductInfo.Name = "UpdateProductInfo";
+			this.UpdateProductInfo.Size = new System.Drawing.Size(186, 23);
+			this.UpdateProductInfo.TabIndex = 24;
+			this.UpdateProductInfo.Text = "Update Product";
+			this.UpdateProductInfo.UseVisualStyleBackColor = false;
+			this.UpdateProductInfo.Click += new System.EventHandler(this.UpdateProductInfo_Click);
+			// 
 			// UpdateSupPermInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,7 +255,7 @@
 		#endregion
 
 		private System.Windows.Forms.Button SubmitSupPermbtn;
-		private System.Windows.Forms.Button AddProduct;
+		private System.Windows.Forms.Button UpdateProduct;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.TextBox ProdExpiryFld;
 		private System.Windows.Forms.Label label6;
@@ -256,5 +271,6 @@
 		private System.Windows.Forms.Label label24;
 		private System.Windows.Forms.ComboBox SuppliersNamesCombo;
 		private System.Windows.Forms.ComboBox StoresNamesCombo;
+		private System.Windows.Forms.Button UpdateProductInfo;
 	}
 }

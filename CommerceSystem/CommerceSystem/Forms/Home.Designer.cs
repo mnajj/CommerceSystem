@@ -114,6 +114,7 @@
 			this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPage6 = new System.Windows.Forms.TabPage();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tabControl1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -125,6 +126,8 @@
 			this.tabPage4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.tabPage5.SuspendLayout();
+			this.tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -944,15 +947,25 @@
 			// 
 			// tabPage1
 			// 
-			this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage1.BackgroundImage = global::CommerceSystem.Properties.Resources.industrials_01;
+			this.tabPage1.BackColor = System.Drawing.Color.White;
 			this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.tabPage1.Controls.Add(this.pictureBox1);
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage1.Size = new System.Drawing.Size(789, 424);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Home";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::CommerceSystem.Properties.Resources.aef8f9b7b9e1654dd9791c380765078e;
+			this.pictureBox1.Location = new System.Drawing.Point(-205, -22);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(1153, 504);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// Home
 			// 
@@ -979,6 +992,8 @@
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1071,5 +1086,6 @@
 		private System.Windows.Forms.ColumnHeader columnHeader19;
 		private System.Windows.Forms.TabPage tabPage6;
 		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }

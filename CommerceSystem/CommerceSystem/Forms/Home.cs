@@ -450,7 +450,7 @@ namespace CommerceSystem
 				DialogResult dlgRes = updateOrDeleteDialog.ShowDialog();
 				if (dlgRes == DialogResult.OK)
 				{
-					UpdateSupPermInfo updateSupPermInfo = new UpdateSupPermInfo();
+					UpdateSupPermInfo updateSupPermInfo = new UpdateSupPermInfo(SupPermList.SelectedItems[0]);
 					updateSupPermInfo.ShowDialog();
 				}
 				else
