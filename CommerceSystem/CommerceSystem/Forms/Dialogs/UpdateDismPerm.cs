@@ -94,6 +94,13 @@ namespace CommerceSystem.Forms.Dialogs
 					Qty = qty
 				};
 				Db.Dism_Prod.Add(dism_Prod);
+				Stock stock = new Stock()
+				{
+					Prod_Id = prodId,
+					Store_Id = int.Parse(RecordData.SubItems[1].Text),
+					Qty = qty
+				};
+				Db.Stocks.Add(stock);
 				Db.SaveChanges();
 				MessageBox.Show("Product Info Added to Dismissal Permission");
 				ClearProdFields();
@@ -121,8 +128,22 @@ namespace CommerceSystem.Forms.Dialogs
 			var dism_prod_rec = Db.Dism_Prod
 				.Where(d => d.Prod_Id == prodId && d.Dism_Id == dismId)
 				.FirstOrDefault();
-
-			dism_prod_rec.Qty = int.Parse(ProdQtyFld.Text);
+			if (dism_prod_rec != null)
+			{
+				dism_prod_rec.Qty = int.Parse(ProdQtyFld.Text);
+				Stock stock = null;
+				foreach (var s in Db.Stocks)
+				{
+					if (s.Prod_Id == s.Prod_Id && s.Store_Id == dism_prod_rec.Dismissal.Store_Id)
+					{
+						stock = s;
+					}
+				}
+				if (stock != null)
+				{
+					stock.Qty = int.Parse(ProdQtyFld.Text);
+				}
+			}
 			Db.SaveChanges();
 			MessageBox.Show("Product Info Updated");
 		}

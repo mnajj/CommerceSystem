@@ -100,14 +100,23 @@ namespace CommerceSystem.Forms.Dialogs
 				.Where(p => p.Prod_Name == ProdNamesCombo.Text)
 				.Select(p => p.Prod_Id)
 				.FirstOrDefault();
+			int permId = int.Parse(RecordData.SubItems[0].Text);
 			var sup_prod = Db.Supplied_Prod
-				.Where(s => s.Prod_Id == prodId)
+				.Where(s => s.Prod_Id == prodId && s.SupPerm_Id == permId)
 				.FirstOrDefault();
 			if (sup_prod != null)
 			{
 				sup_prod.Qty = int.Parse(ProdQtyFld.Text);
 				sup_prod.Production_Date = ProdProddateFld.Value;
 				sup_prod.Expiry = int.Parse(ProdExpiryFld.Text);
+
+				var stock = Db.Stocks
+					.Where(s => s.Prod_Id == prodId && s.Store_Id == sup_prod.SuppliePermission.Store_Id)
+					.FirstOrDefault();
+				if (stock != null)
+				{
+					stock.Qty = sup_prod.Qty;
+				}
 				Db.SaveChanges();
 				MessageBox.Show("Product Info Updated Successfully");
 				ClearProdFields();
@@ -141,8 +150,6 @@ namespace CommerceSystem.Forms.Dialogs
 			.Select(p => p.Prod_Id)
 			.FirstOrDefault();
 
-
-
 			if (sup_prod == null)
 			{
 				Supplied_Prod supplied_Prod = new Supplied_Prod()
@@ -154,6 +161,13 @@ namespace CommerceSystem.Forms.Dialogs
 					Expiry = int.Parse(ProdExpiryFld.Text)
 				};
 				Db.Supplied_Prod.Add(supplied_Prod);
+				Stock stock = new Stock()
+				{
+					Prod_Id = prodId,
+					Store_Id = int.Parse(RecordData.SubItems[1].Text),
+					Qty = int.Parse(ProdQtyFld.Text)
+				};
+				Db.Stocks.Add(stock);
 				Db.SaveChanges();
 				MessageBox.Show("Product Info Added Successfully!");
 				ClearProdFields();

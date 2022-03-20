@@ -101,7 +101,7 @@
     <Key>
       <PropertyRef Name="Sup_Id" />
     </Key>
-    <Property Name="Sup_Id" Type="int" Nullable="false" />
+    <Property Name="Sup_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Sup_Name" Type="varchar" MaxLength="50" />
     <Property Name="Sup_Phone" Type="varchar" MaxLength="50" />
     <Property Name="Sup_Fax" Type="varchar" MaxLength="50" />

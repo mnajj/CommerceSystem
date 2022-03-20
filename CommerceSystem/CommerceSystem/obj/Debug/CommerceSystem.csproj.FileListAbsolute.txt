@@ -1,8 +1,6 @@
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\CommerceSystem.exe.config
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\CommerceSystem.exe
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\CommerceSystem.pdb
-D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.AssemblyReference.cache
-D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.SuggestedBindingRedirects.cache
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Properties.Resources.resources
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.GenerateResource.cache
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.CoreCompileInputs.cache
@@ -28,3 +26,5 @@ D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusi
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\bin\Debug\Syncfusion.Pdf.Base.xml
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.SelectProductInPeriod.resources
 D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.Forms.Dialogs.SelectTimePeriod.resources
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.AssemblyReference.cache
+D:\ITI\P.D.Track\LINQAndEF\Proj\CommerceSystem\CommerceSystem\obj\Debug\CommerceSystem.csproj.SuggestedBindingRedirects.cache

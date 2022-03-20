@@ -122,13 +122,36 @@
 			this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPage7 = new System.Windows.Forms.TabPage();
+			this.ExpirationBtn = new System.Windows.Forms.Button();
+			this.PassedProdBtn = new System.Windows.Forms.Button();
 			this.ProdPeriodBtn = new System.Windows.Forms.Button();
 			this.GenerateStoresReportBtn = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
-			this.PassedProdBtn = new System.Windows.Forms.Button();
-			this.ExpirationBtn = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.pictureBox4 = new System.Windows.Forms.PictureBox();
+			this.tabPage8 = new System.Windows.Forms.TabPage();
+			this.TransBtn = new System.Windows.Forms.Button();
+			this.TransAddProductBtn = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.ProdQtyF = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.ProdNamesCombo = new System.Windows.Forms.ComboBox();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label28 = new System.Windows.Forms.Label();
+			this.FromStoresCombo = new System.Windows.Forms.ComboBox();
+			this.label29 = new System.Windows.Forms.Label();
+			this.ToStoresCombo = new System.Windows.Forms.ComboBox();
+			this.TransProductsList = new System.Windows.Forms.ListBox();
+			this.ProdExpiryFld = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.ProdProddateFld = new System.Windows.Forms.DateTimePicker();
+			this.label16 = new System.Windows.Forms.Label();
+			this.TransSupCombo = new System.Windows.Forms.ComboBox();
+			this.label26 = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -144,7 +167,11 @@
 			this.tabPage6.SuspendLayout();
 			this.tabPage7.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			this.tabPage8.SuspendLayout();
+			this.groupBox4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -155,6 +182,7 @@
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
 			this.tabControl1.Controls.Add(this.tabPage6);
+			this.tabControl1.Controls.Add(this.tabPage8);
 			this.tabControl1.Controls.Add(this.tabPage7);
 			this.tabControl1.Location = new System.Drawing.Point(1, 1);
 			this.tabControl1.Name = "tabControl1";
@@ -201,6 +229,7 @@
 			this.button1.TabIndex = 16;
 			this.button1.Text = "Delete";
 			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.Button1_Click);
 			// 
 			// Update
 			// 
@@ -213,6 +242,7 @@
 			this.Update.TabIndex = 15;
 			this.Update.Text = "Update";
 			this.Update.UseVisualStyleBackColor = false;
+			this.Update.Click += new System.EventHandler(this.Update_Click);
 			// 
 			// groupBox1
 			// 
@@ -237,7 +267,6 @@
 			// 
 			// ManagerCombo
 			// 
-			this.ManagerCombo.Enabled = false;
 			this.ManagerCombo.FormattingEnabled = true;
 			this.ManagerCombo.Location = new System.Drawing.Point(108, 149);
 			this.ManagerCombo.Name = "ManagerCombo";
@@ -860,6 +889,7 @@
 			this.SuppliersList.TabIndex = 22;
 			this.SuppliersList.UseCompatibleStateImageBehavior = false;
 			this.SuppliersList.View = System.Windows.Forms.View.Details;
+			this.SuppliersList.Click += new System.EventHandler(this.SuppliersList_Click);
 			// 
 			// columnHeader10
 			// 
@@ -899,6 +929,8 @@
 			// 
 			// tabPage5
 			// 
+			this.tabPage5.Controls.Add(this.label13);
+			this.tabPage5.Controls.Add(this.pictureBox3);
 			this.tabPage5.Controls.Add(this.AddSupPerm);
 			this.tabPage5.Controls.Add(this.SupPermList);
 			this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -968,6 +1000,8 @@
 			// 
 			// tabPage6
 			// 
+			this.tabPage6.Controls.Add(this.label14);
+			this.tabPage6.Controls.Add(this.pictureBox4);
 			this.tabPage6.Controls.Add(this.AddDismBtn);
 			this.tabPage6.Controls.Add(this.DismList);
 			this.tabPage6.Location = new System.Drawing.Point(4, 22);
@@ -1041,20 +1075,43 @@
 			this.tabPage7.Controls.Add(this.ExpirationBtn);
 			this.tabPage7.Controls.Add(this.PassedProdBtn);
 			this.tabPage7.Controls.Add(this.ProdPeriodBtn);
-			this.tabPage7.Controls.Add(this.pictureBox2);
 			this.tabPage7.Controls.Add(this.GenerateStoresReportBtn);
 			this.tabPage7.Controls.Add(this.button3);
+			this.tabPage7.Controls.Add(this.pictureBox2);
 			this.tabPage7.Location = new System.Drawing.Point(4, 22);
 			this.tabPage7.Name = "tabPage7";
 			this.tabPage7.Size = new System.Drawing.Size(789, 424);
 			this.tabPage7.TabIndex = 6;
 			this.tabPage7.Text = "Reports 📄";
 			// 
+			// ExpirationBtn
+			// 
+			this.ExpirationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ExpirationBtn.Location = new System.Drawing.Point(241, 3);
+			this.ExpirationBtn.Name = "ExpirationBtn";
+			this.ExpirationBtn.Size = new System.Drawing.Size(281, 49);
+			this.ExpirationBtn.TabIndex = 5;
+			this.ExpirationBtn.Text = "Items That Are Close to Expiration";
+			this.ExpirationBtn.UseVisualStyleBackColor = true;
+			this.ExpirationBtn.Click += new System.EventHandler(this.ExpirationBtn_Click);
+			// 
+			// PassedProdBtn
+			// 
+			this.PassedProdBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.PassedProdBtn.Location = new System.Drawing.Point(3, 58);
+			this.PassedProdBtn.Name = "PassedProdBtn";
+			this.PassedProdBtn.Size = new System.Drawing.Size(406, 64);
+			this.PassedProdBtn.TabIndex = 4;
+			this.PassedProdBtn.Text = "A Report on Items That Have Passed a Period of Time in Stores";
+			this.PassedProdBtn.UseVisualStyleBackColor = true;
+			this.PassedProdBtn.Click += new System.EventHandler(this.PassedProdBtn_Click);
+			// 
 			// ProdPeriodBtn
 			// 
-			this.ProdPeriodBtn.Location = new System.Drawing.Point(240, 64);
+			this.ProdPeriodBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ProdPeriodBtn.Location = new System.Drawing.Point(415, 58);
 			this.ProdPeriodBtn.Name = "ProdPeriodBtn";
-			this.ProdPeriodBtn.Size = new System.Drawing.Size(316, 23);
+			this.ProdPeriodBtn.Size = new System.Drawing.Size(368, 64);
 			this.ProdPeriodBtn.TabIndex = 3;
 			this.ProdPeriodBtn.Text = "Procucts During Specific Period Report";
 			this.ProdPeriodBtn.UseVisualStyleBackColor = true;
@@ -1062,9 +1119,10 @@
 			// 
 			// GenerateStoresReportBtn
 			// 
-			this.GenerateStoresReportBtn.Location = new System.Drawing.Point(240, 35);
+			this.GenerateStoresReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.GenerateStoresReportBtn.Location = new System.Drawing.Point(3, 3);
 			this.GenerateStoresReportBtn.Name = "GenerateStoresReportBtn";
-			this.GenerateStoresReportBtn.Size = new System.Drawing.Size(143, 23);
+			this.GenerateStoresReportBtn.Size = new System.Drawing.Size(232, 49);
 			this.GenerateStoresReportBtn.TabIndex = 1;
 			this.GenerateStoresReportBtn.Text = "Stores Report";
 			this.GenerateStoresReportBtn.UseVisualStyleBackColor = true;
@@ -1072,33 +1130,14 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(413, 35);
+			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button3.Location = new System.Drawing.Point(528, 3);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(143, 23);
+			this.button3.Size = new System.Drawing.Size(255, 49);
 			this.button3.TabIndex = 0;
 			this.button3.Text = "Stores Products Report";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
-			// 
-			// PassedProdBtn
-			// 
-			this.PassedProdBtn.Location = new System.Drawing.Point(106, 93);
-			this.PassedProdBtn.Name = "PassedProdBtn";
-			this.PassedProdBtn.Size = new System.Drawing.Size(316, 23);
-			this.PassedProdBtn.TabIndex = 4;
-			this.PassedProdBtn.Text = "A Report on Items That Have Passed a Period of Time in Stores";
-			this.PassedProdBtn.UseVisualStyleBackColor = true;
-			this.PassedProdBtn.Click += new System.EventHandler(this.PassedProdBtn_Click);
-			// 
-			// ExpirationBtn
-			// 
-			this.ExpirationBtn.Location = new System.Drawing.Point(428, 93);
-			this.ExpirationBtn.Name = "ExpirationBtn";
-			this.ExpirationBtn.Size = new System.Drawing.Size(192, 23);
-			this.ExpirationBtn.TabIndex = 5;
-			this.ExpirationBtn.Text = "Items That Are Close to Expiration";
-			this.ExpirationBtn.UseVisualStyleBackColor = true;
-			this.ExpirationBtn.Click += new System.EventHandler(this.ExpirationBtn_Click);
 			// 
 			// pictureBox1
 			// 
@@ -1110,6 +1149,16 @@
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
+			this.pictureBox3.Location = new System.Drawing.Point(5, 384);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox3.TabIndex = 30;
+			this.pictureBox3.TabStop = false;
+			// 
 			// pictureBox2
 			// 
 			this.pictureBox2.Image = global::CommerceSystem.Properties.Resources._21a36d7399ae3f5f361c64493dcb3e97;
@@ -1119,6 +1168,228 @@
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 2;
 			this.pictureBox2.TabStop = false;
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(46, 396);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(231, 13);
+			this.label13.TabIndex = 31;
+			this.label13.Text = "Double-Click to Show, Update or Delete Recod";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(45, 397);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(231, 13);
+			this.label14.TabIndex = 33;
+			this.label14.Text = "Double-Click to Show, Update or Delete Recod";
+			// 
+			// pictureBox4
+			// 
+			this.pictureBox4.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
+			this.pictureBox4.Location = new System.Drawing.Point(4, 385);
+			this.pictureBox4.Name = "pictureBox4";
+			this.pictureBox4.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox4.TabIndex = 32;
+			this.pictureBox4.TabStop = false;
+			// 
+			// tabPage8
+			// 
+			this.tabPage8.BackColor = System.Drawing.Color.White;
+			this.tabPage8.Controls.Add(this.TransProductsList);
+			this.tabPage8.Controls.Add(this.label29);
+			this.tabPage8.Controls.Add(this.ToStoresCombo);
+			this.tabPage8.Controls.Add(this.TransBtn);
+			this.tabPage8.Controls.Add(this.groupBox4);
+			this.tabPage8.Controls.Add(this.label28);
+			this.tabPage8.Controls.Add(this.FromStoresCombo);
+			this.tabPage8.Location = new System.Drawing.Point(4, 22);
+			this.tabPage8.Name = "tabPage8";
+			this.tabPage8.Size = new System.Drawing.Size(789, 424);
+			this.tabPage8.TabIndex = 7;
+			this.tabPage8.Text = "Transfer Items 🔖";
+			// 
+			// TransBtn
+			// 
+			this.TransBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
+			this.TransBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TransBtn.ForeColor = System.Drawing.Color.White;
+			this.TransBtn.Location = new System.Drawing.Point(76, 341);
+			this.TransBtn.Name = "TransBtn";
+			this.TransBtn.Size = new System.Drawing.Size(301, 32);
+			this.TransBtn.TabIndex = 32;
+			this.TransBtn.Text = "Transfer";
+			this.TransBtn.UseVisualStyleBackColor = false;
+			this.TransBtn.Click += new System.EventHandler(this.TransBtn_Click);
+			// 
+			// TransAddProductBtn
+			// 
+			this.TransAddProductBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.TransAddProductBtn.Location = new System.Drawing.Point(10, 157);
+			this.TransAddProductBtn.Name = "TransAddProductBtn";
+			this.TransAddProductBtn.Size = new System.Drawing.Size(281, 23);
+			this.TransAddProductBtn.TabIndex = 23;
+			this.TransAddProductBtn.Text = "Add Product";
+			this.TransAddProductBtn.UseVisualStyleBackColor = false;
+			this.TransAddProductBtn.Click += new System.EventHandler(this.TransAddProductBtn_Click);
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
+			this.groupBox4.Controls.Add(this.label26);
+			this.groupBox4.Controls.Add(this.TransSupCombo);
+			this.groupBox4.Controls.Add(this.ProdExpiryFld);
+			this.groupBox4.Controls.Add(this.TransAddProductBtn);
+			this.groupBox4.Controls.Add(this.ProdProddateFld);
+			this.groupBox4.Controls.Add(this.label15);
+			this.groupBox4.Controls.Add(this.ProdQtyF);
+			this.groupBox4.Controls.Add(this.label17);
+			this.groupBox4.Controls.Add(this.label16);
+			this.groupBox4.Controls.Add(this.ProdNamesCombo);
+			this.groupBox4.Controls.Add(this.label18);
+			this.groupBox4.Location = new System.Drawing.Point(80, 149);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(297, 186);
+			this.groupBox4.TabIndex = 31;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Products";
+			// 
+			// ProdQtyF
+			// 
+			this.ProdQtyF.Location = new System.Drawing.Point(121, 48);
+			this.ProdQtyF.Name = "ProdQtyF";
+			this.ProdQtyF.Size = new System.Drawing.Size(170, 20);
+			this.ProdQtyF.TabIndex = 20;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label17.Location = new System.Drawing.Point(28, 47);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(60, 19);
+			this.label17.TabIndex = 19;
+			this.label17.Text = "Quantity";
+			// 
+			// ProdNamesCombo
+			// 
+			this.ProdNamesCombo.FormattingEnabled = true;
+			this.ProdNamesCombo.Location = new System.Drawing.Point(121, 21);
+			this.ProdNamesCombo.Name = "ProdNamesCombo";
+			this.ProdNamesCombo.Size = new System.Drawing.Size(170, 21);
+			this.ProdNamesCombo.TabIndex = 18;
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label18.Location = new System.Drawing.Point(17, 20);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(98, 19);
+			this.label18.TabIndex = 17;
+			this.label18.Text = "Product Name";
+			// 
+			// label28
+			// 
+			this.label28.AutoSize = true;
+			this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label28.ForeColor = System.Drawing.Color.Black;
+			this.label28.Location = new System.Drawing.Point(72, 94);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(45, 19);
+			this.label28.TabIndex = 25;
+			this.label28.Text = "From:";
+			// 
+			// FromStoresCombo
+			// 
+			this.FromStoresCombo.FormattingEnabled = true;
+			this.FromStoresCombo.Location = new System.Drawing.Point(134, 95);
+			this.FromStoresCombo.Name = "FromStoresCombo";
+			this.FromStoresCombo.Size = new System.Drawing.Size(243, 21);
+			this.FromStoresCombo.TabIndex = 26;
+			// 
+			// label29
+			// 
+			this.label29.AutoSize = true;
+			this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label29.ForeColor = System.Drawing.Color.Black;
+			this.label29.Location = new System.Drawing.Point(76, 121);
+			this.label29.Name = "label29";
+			this.label29.Size = new System.Drawing.Size(28, 19);
+			this.label29.TabIndex = 33;
+			this.label29.Text = "To:";
+			// 
+			// ToStoresCombo
+			// 
+			this.ToStoresCombo.FormattingEnabled = true;
+			this.ToStoresCombo.Location = new System.Drawing.Point(134, 122);
+			this.ToStoresCombo.Name = "ToStoresCombo";
+			this.ToStoresCombo.Size = new System.Drawing.Size(243, 21);
+			this.ToStoresCombo.TabIndex = 34;
+			// 
+			// TransProductsList
+			// 
+			this.TransProductsList.FormattingEnabled = true;
+			this.TransProductsList.Location = new System.Drawing.Point(468, 3);
+			this.TransProductsList.Name = "TransProductsList";
+			this.TransProductsList.Size = new System.Drawing.Size(318, 420);
+			this.TransProductsList.TabIndex = 35;
+			// 
+			// ProdExpiryFld
+			// 
+			this.ProdExpiryFld.Location = new System.Drawing.Point(121, 100);
+			this.ProdExpiryFld.Name = "ProdExpiryFld";
+			this.ProdExpiryFld.Size = new System.Drawing.Size(170, 20);
+			this.ProdExpiryFld.TabIndex = 39;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label15.Location = new System.Drawing.Point(7, 99);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(108, 19);
+			this.label15.TabIndex = 38;
+			this.label15.Text = "Expiry (Months)";
+			// 
+			// ProdProddateFld
+			// 
+			this.ProdProddateFld.Location = new System.Drawing.Point(121, 74);
+			this.ProdProddateFld.Name = "ProdProddateFld";
+			this.ProdProddateFld.Size = new System.Drawing.Size(170, 20);
+			this.ProdProddateFld.TabIndex = 37;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label16.Location = new System.Drawing.Point(7, 74);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(108, 19);
+			this.label16.TabIndex = 36;
+			this.label16.Text = "Production Date";
+			// 
+			// TransSupCombo
+			// 
+			this.TransSupCombo.FormattingEnabled = true;
+			this.TransSupCombo.Location = new System.Drawing.Point(121, 126);
+			this.TransSupCombo.Name = "TransSupCombo";
+			this.TransSupCombo.Size = new System.Drawing.Size(170, 21);
+			this.TransSupCombo.TabIndex = 40;
+			// 
+			// label26
+			// 
+			this.label26.AutoSize = true;
+			this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label26.Location = new System.Drawing.Point(28, 128);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(59, 19);
+			this.label26.TabIndex = 41;
+			this.label26.Text = "Supplier";
 			// 
 			// Home
 			// 
@@ -1146,10 +1417,18 @@
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
+			this.tabPage5.PerformLayout();
 			this.tabPage6.ResumeLayout(false);
+			this.tabPage6.PerformLayout();
 			this.tabPage7.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			this.tabPage8.ResumeLayout(false);
+			this.tabPage8.PerformLayout();
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox4.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1257,5 +1536,28 @@
 		private System.Windows.Forms.Button ProdPeriodBtn;
 		private System.Windows.Forms.Button PassedProdBtn;
 		private System.Windows.Forms.Button ExpirationBtn;
+		private System.Windows.Forms.PictureBox pictureBox3;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.PictureBox pictureBox4;
+		private System.Windows.Forms.TabPage tabPage8;
+		private System.Windows.Forms.ListBox TransProductsList;
+		private System.Windows.Forms.Label label29;
+		private System.Windows.Forms.ComboBox ToStoresCombo;
+		private System.Windows.Forms.Button TransBtn;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.Button TransAddProductBtn;
+		private System.Windows.Forms.TextBox ProdQtyF;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.ComboBox ProdNamesCombo;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label label28;
+		private System.Windows.Forms.ComboBox FromStoresCombo;
+		private System.Windows.Forms.TextBox ProdExpiryFld;
+		private System.Windows.Forms.DateTimePicker ProdProddateFld;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label26;
+		private System.Windows.Forms.ComboBox TransSupCombo;
 	}
 }

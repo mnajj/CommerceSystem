@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassLib\TransProduct.cs" />
     <Compile Include="Forms\Dialogs\AddDismPerm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +255,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\74-745309_mouse-double-click-mouse-double-click-icon.png" />
     <None Include="Resources\21a36d7399ae3f5f361c64493dcb3e97.png" />
     <None Include="Resources\aef8f9b7b9e1654dd9791c380765078e.png" />
     <None Include="Resources\470024-middle.png" />

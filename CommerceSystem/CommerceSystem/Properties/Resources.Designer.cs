@@ -83,6 +83,16 @@ namespace CommerceSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _74_745309_mouse_double_click_mouse_double_click_icon {
+            get {
+                object obj = ResourceManager.GetObject("74-745309_mouse-double-click-mouse-double-click-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap aef8f9b7b9e1654dd9791c380765078e {
             get {
                 object obj = ResourceManager.GetObject("aef8f9b7b9e1654dd9791c380765078e", resourceCulture);

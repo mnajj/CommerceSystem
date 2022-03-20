@@ -10,6 +10,7 @@ using Syncfusion.Pdf;
 using System.Diagnostics;
 using System.IO;
 using System.Drawing;
+using CommerceSystem.ClassLib;
 
 namespace CommerceSystem
 {
@@ -19,10 +20,11 @@ namespace CommerceSystem
 
 		public List<int> RepStoresId { get; set; } = new List<int>();
 		public List<int> RepProductsId { get; set; } = new List<int>();
-		public DateTime RepFromDate { get; set; }
+		public DateTime RepFromDate { get; set; }	
 		public DateTime RepToDate { get; set; }
 		public int RepTimePeriod { get; set; }
 		public int RepExpiration { get; set; }
+		public List<TransProduct> TransProducts { get; set; } = new List<TransProduct>();
 
 		public Home()
 		{
@@ -51,6 +53,9 @@ namespace CommerceSystem
 					DisplayDismissalData();
 					break;
 				case 6:
+					DisplayTransComboBoxData();
+					break;
+				case 7:
 					break;
 			}
 		}
@@ -78,11 +83,13 @@ namespace CommerceSystem
 				};
 				ListViewItem item = new ListViewItem(row);
 				StoreList.Items.Add(item);
+				DisplayComboMangerNames();
 			}
 		}
 
 		private void DisplayComboMangerNames()
 		{
+			ManagerCombo.Items.Clear();
 			var mangers = Db.Stores.Select(s => s.Manager_Id).Distinct().ToList();
 			foreach (var manger in mangers)
 			{
@@ -100,15 +107,22 @@ namespace CommerceSystem
 					&& ManagerCombo.Text != String.Empty
 				)
 			{
-				Store store = new Store()
+				try
 				{
-					Store_Name = StorenameFld.Text,
-					Store_Phone = StorenameFld.Text,
-					Store_Email = StorenameFld.Text,
-					Store_Address = StorenameFld.Text,
-					Manager_Id = int.Parse(ManagerCombo.Text)
-				};
-				Db.Stores.Add(store);
+					Store store = new Store()
+					{
+						Store_Name = StorenameFld.Text,
+						Store_Phone = StorePhoneFld.Text,
+						Store_Email = StoreMailFld.Text,
+						Store_Address = StoreAddrsFld.Text,
+						Manager_Id = int.Parse(ManagerCombo.Text)
+					};
+					Db.Stores.Add(store);
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show("Manager Field Should be Intger");
+				}
 				Db.SaveChanges();
 				DisplayStoresData();
 			}
@@ -129,8 +143,66 @@ namespace CommerceSystem
 				StoreAddrsFld.Text = StoreList.SelectedItems[0].SubItems[4].Text;
 				ManagerCombo.Text = StoreList.SelectedItems[0].SubItems[5].Text;
 			}
-			ManagerCombo.Enabled = true;
 		}
+
+		private void Button1_Click(object sender, EventArgs e)
+		{
+			if(StoreIdFld.Text != String.Empty)
+			{
+				int id = int.Parse(StoreIdFld.Text);
+				var store = Db.Stores
+					.Where(s => s.Store_Id == id)
+					.FirstOrDefault();
+				Db.Stores.Remove(store);
+				Db.SaveChanges();
+				DisplayStoresData();
+				ClearStoreFields();
+			}
+			else
+			{
+				MessageBox.Show("Please, Select a Store to Delete");
+			}
+		}
+
+		private void ClearStoreFields()
+		{
+			StoreIdFld.Text =
+			StorenameFld.Text =
+			StorePhoneFld.Text =
+			StoreMailFld.Text =
+			StoreAddrsFld.Text =
+			ManagerCombo.Text = String.Empty;
+		}
+
+		private void Update_Click(object sender, EventArgs e)
+		{
+			if (
+					StoreIdFld.Text != String.Empty
+					&& StorenameFld.Text != String.Empty
+					&& StorePhoneFld.Text != String.Empty
+					&& StoreMailFld.Text != String.Empty
+					&& StoreAddrsFld.Text != String.Empty
+					&& ManagerCombo.Text != String.Empty
+				)
+			{
+				int id = int.Parse(StoreIdFld.Text);
+				var store = Db.Stores.
+					Where(s => s.Store_Id == id)
+					.FirstOrDefault();
+				store.Store_Name =	 StorenameFld.Text ;
+				store.Store_Phone =	 StorePhoneFld.Text;
+				store.Store_Email =	 StoreMailFld.Text ;
+				store.Store_Address =	 StoreAddrsFld.Text;
+				store.Manager_Id =	 int.Parse(ManagerCombo.Text);
+				Db.SaveChanges();
+				DisplayStoresData();
+			}
+			else
+			{
+				MessageBox.Show("Some Fields is empty!");
+			}
+		}
+
 		#endregion
 
 		#region Products
@@ -175,28 +247,49 @@ namespace CommerceSystem
 					&& ProdQtyFld.Text != String.Empty
 				)
 			{
-				Product prod = new Product()
+				try
 				{
-					Prod_Name = ProdNameFld.Text,
-					Model_Year = short.Parse(ProdYearFld.Text)
-				};
-				Db.Products.Add(prod);
+					Product prod = new Product()
+					{
+						Prod_Name = ProdNameFld.Text,
+						Model_Year = short.Parse(ProdYearFld.Text)
+					};
+					Db.Products.Add(prod);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Model Year Should be Number");
+				}
 
 				var storeId = Db.Stores
 					.Where(s => s.Store_Name == StoresnamesCombo.Text)
 					.Select(s => s.Store_Id)
 					.FirstOrDefault();
-				Stock stock = new Stock()
+				try
 				{
-					Store_Id = storeId,
-					Prod_Id = Db.Products.Select(p => p.Prod_Id).Max(),
-					Qty = int.Parse(ProdQtyFld.Text)
-				};
-				Db.Stocks.Add(stock);
+					Stock stock = new Stock()
+					{
+						Store_Id = storeId,
+						Prod_Id = Db.Products.Select(p => p.Prod_Id).Max(),
+						Qty = int.Parse(ProdQtyFld.Text)
+					};
+					Db.Stocks.Add(stock);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Quantity Should be Number");
+				}
+				try
+				{
+					Db.SaveChanges();
+					DisplayProductsData();
+					ClearProdFields();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
 
-				Db.SaveChanges();
-				DisplayProductsData();
-				ClearProdFields();
 			}
 			else
 			{
@@ -240,9 +333,14 @@ namespace CommerceSystem
 					.Select(s => s.Store_Id)
 					.FirstOrDefault();
 
-				var stock = Db.Stocks
-					.Where(s => s.Prod_Id == id && s.Store_Id == oldStoreId)
-					.FirstOrDefault() as Stock;
+				Stock stock = null;
+				foreach (var s in Db.Stocks)
+				{
+					if (s.Prod_Id == id && s.Store_Id == oldStoreId)
+					{
+						stock = s;
+					}
+				}
 
 				stock.Qty = int.Parse(ProdQtyFld.Text);
 
@@ -310,9 +408,10 @@ namespace CommerceSystem
 					sup.Sup_Id.ToString(),
 					sup.Sup_Name,
 					sup.Sup_Phone,
+					sup.Sup_Fax,
 					sup.Sup_Telephone,
 					sup.Sup_Mail,
-					sup.Sup_Mail
+					sup.Sup_Site
 				};
 				ListViewItem item = new ListViewItem(row);
 				SuppliersList.Items.Add(item);
@@ -332,7 +431,6 @@ namespace CommerceSystem
 			{
 				Supplier sup = new Supplier()
 				{
-					Sup_Id = int.Parse(SupIdFld.Text),
 					Sup_Name = SupNameFld.Text,
 					Sup_Phone = SupPhoneFld.Text,
 					Sup_Fax = SupFaxFld.Text,
@@ -353,7 +451,7 @@ namespace CommerceSystem
 		private void UpdateSupBtn_Click(object sender, EventArgs e)
 		{
 			if (
-					SupIdFld.Text == String.Empty
+					SupIdFld.Text != String.Empty
 					&& SupNameFld.Text != String.Empty
 					&& SupPhoneFld.Text != String.Empty
 					&& SupFaxFld.Text != String.Empty
@@ -371,7 +469,7 @@ namespace CommerceSystem
 				sup.Sup_Fax = SupFaxFld.Text;
 				sup.Sup_Telephone = SupTeleFld.Text;
 				sup.Sup_Mail = SupMailFld.Text;
-				sup.Sup_Mail = SupSiteFld.Text;
+				sup.Sup_Site = SupSiteFld.Text;
 				Db.SaveChanges();
 				DisplaySuppliersData();
 				ClearSupFields();
@@ -397,6 +495,21 @@ namespace CommerceSystem
 			else
 			{
 				MessageBox.Show("Please, choose a Supplier");
+			}
+		}
+
+
+		private void SuppliersList_Click(object sender, EventArgs e)
+		{
+			if (SuppliersList.SelectedItems.Count > 0)
+			{
+				SupIdFld.Text = SuppliersList.SelectedItems[0].SubItems[0].Text;
+				SupNameFld.Text = SuppliersList.SelectedItems[0].SubItems[1].Text;
+				SupPhoneFld.Text = SuppliersList.SelectedItems[0].SubItems[2].Text;
+				SupFaxFld.Text = SuppliersList.SelectedItems[0].SubItems[3].Text;
+				SupTeleFld.Text = SuppliersList.SelectedItems[0].SubItems[4].Text;
+				SupMailFld.Text = SuppliersList.SelectedItems[0].SubItems[5].Text;
+				SupSiteFld.Text = SuppliersList.SelectedItems[0].SubItems[6].Text;
 			}
 		}
 
@@ -435,7 +548,7 @@ namespace CommerceSystem
 				{
 					sup.SupPerm_Id.ToString(),
 					sup.Store.Store_Name,
-					sup.SupPerm_Date.Value.Date.ToString(),
+					sup.SupPerm_Date.Value.Date.ToString("dd/MM/yyyy"),
 					sup.Supplier.Sup_Name,
 					prodInfo
 				};
@@ -565,6 +678,7 @@ namespace CommerceSystem
 				}
 				repData += "******************************\n";
 				ConvertDataToPdfFile(repData);
+				RepStoresId.Clear();
 			}
 		}
 
@@ -587,7 +701,6 @@ namespace CommerceSystem
 				Process.Start("Report.pdf");
 			}
 			catch (Exception ex) { }
-			RepStoresId.Clear();
 		}
 
 		private void GenerateStoresReportBtn_Click(object sender, EventArgs e)
@@ -643,7 +756,7 @@ namespace CommerceSystem
 							&& sup.SuppliePermission.SupPerm_Date < RepToDate
 							)
 						{
-							repData += $"{sup.SupPerm_Id}   {sup.SuppliePermission.Store.Store_Name}   {sup.SuppliePermission.Supplier.Sup_Name}    {sup.SuppliePermission.SupPerm_Date.Value.Date}";
+							repData += $"{sup.SupPerm_Id}   {sup.SuppliePermission.Store.Store_Name}   {sup.SuppliePermission.Supplier.Sup_Name}    {sup.SuppliePermission.SupPerm_Date.Value.ToString("dd/MM/yyyy")}";
 						}
 					}
 				}
@@ -656,13 +769,14 @@ namespace CommerceSystem
 							&& dis.Dismissal.Dism_date < RepToDate
 							)
 						{
-							repData += $"{dis.Dismissal.Dism_Id}   {dis.Dismissal.Store.Store_Name}   {dis.Dismissal.Customer.Cus_Fname}    {dis.Dismissal.Dism_date.Value.Date}";
+							repData += $"{dis.Dismissal.Dism_Id}   {dis.Dismissal.Store.Store_Name}   {dis.Dismissal.Customer.Cus_Fname}    {dis.Dismissal.Dism_date.Value.ToString("dd/MM/yyyy")}";
 						}
 					}
 				}
 				repData += "******************************\n";
 			}
 			ConvertDataToPdfFile(repData);
+			RepProductsId.Clear();
 		}
 
 
@@ -704,6 +818,183 @@ namespace CommerceSystem
 			}
 			ConvertDataToPdfFile(repData);
 		}
+
+		#endregion
+
+		#region Trsnfer Items
+
+		private void DisplayComboProducts()
+		{
+			var prods = Db.Products
+				.Select(p => p.Prod_Name)
+				.ToList();
+			foreach(var p in prods)
+			{
+				ProdNamesCombo.Items.Add(p);
+			}
+		}
+
+		private void TransAddProductBtn_Click(object sender, EventArgs e)
+		{
+			if (
+					ProdNamesCombo.Text != String.Empty
+				&& ProdQtyF.Text != String.Empty
+				&& ProdProddateFld.Text != String.Empty
+				&& ProdExpiryFld.Text != String.Empty
+				&& TransSupCombo.Text != String.Empty
+				)
+			{
+				try
+				{
+					TransProduct prod = new TransProduct()
+					{
+						ProdId = Db.Supplied_Prod
+						.Where(p => p.Product.Prod_Name == ProdNamesCombo.Text)
+						.Select(p => p.Product.Prod_Id)
+						.FirstOrDefault(),
+						ProdDate = ProdProddateFld.Value,
+						Qty = int.Parse(ProdQtyF.Text),
+						Exp = int.Parse(ProdExpiryFld.Text),
+						Supplier = Db.Suppliers
+						.Where(s => s.Sup_Name == TransSupCombo.Text)
+						.FirstOrDefault()
+					};
+					TransProducts.Add(prod);
+					TransProductsList.Items.Add(ProdNamesCombo.Text);
+					ClearTransProdFields();
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show("Quantity and Expiry must be Numbers");
+					return;
+				}
+			}
+			else
+			{
+				MessageBox.Show("Some Product Field is Empty");
+			}
+		}
+
+		private void ClearTransProdFields()
+		{
+			ProdNamesCombo.Text =
+			ProdQtyF.Text =
+			ProdProddateFld.Text =
+			ProdExpiryFld.Text = String.Empty;
+		}
+
+		private void TransBtn_Click(object sender, EventArgs e)
+		{
+			if (FromStoresCombo.Text != String.Empty
+				&& ToStoresCombo.Text != String.Empty)
+			{
+				if(FromStoresCombo.Text != ToStoresCombo.Text)
+				{
+					TransProdsToStore();
+					CreateSupPermForTrans();
+					Clear
+				}
+				else
+				{
+					MessageBox.Show("You Choose The Same Store!");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please, Choose From and To Store");
+			}
+		}
+
+		private void CreateSupPermForTrans()
+		{
+			throw new NotImplementedException();
+		}
+
+		private void DisplayTransComboBoxData()
+		{
+			DisplayComboProducts();
+			DisplayComboSuppliers();
+			DisplayFromAndToStoresCombo();
+		}
+
+		private void DisplayFromAndToStoresCombo()
+		{
+			var stores = Db.Stores
+				.Select(s => s.Store_Name)
+				.ToList();
+			foreach(var store in stores)
+			{
+				FromStoresCombo.Items.Add(store);
+				ToStoresCombo.Items.Add(store);
+			}
+		}
+
+		private void DisplayComboSuppliers()
+		{
+			var sups = Db.Suppliers
+				.Select(s => s.Sup_Name)
+				.ToList();
+			foreach(var sup in sups)
+			{
+				TransSupCombo.Items.Add(sup);
+			}
+		}
+
+		private void TransProdsToStore()
+		{
+			var fromStore = Db.Stores
+				.Where(s => s.Store_Name == FromStoresCombo.Text)
+				.FirstOrDefault();
+			var toStore = Db.Stores
+				.Where(s => s.Store_Name == ToStoresCombo.Text)
+				.FirstOrDefault();
+			foreach ( var prod in TransProducts)
+			{
+				var fromProd = Db.Supplied_Prod
+					.Where(
+								p => p.Prod_Id == prod.ProdId
+							&& p.Expiry == prod.Exp
+							&& p.Production_Date == prod.ProdDate
+							&& p.SuppliePermission.Store_Id == fromStore.Store_Id
+							&& p.SuppliePermission.Sup_Id == prod.Supplier.Sup_Id
+							)
+					.FirstOrDefault();
+				if (fromProd != null)
+				{
+					var inStock = Db.Stocks
+						.Where(s => s.Store_Id == toStore.Store_Id
+									&& s.Prod_Id == prod.ProdId)
+						.FirstOrDefault();
+					if (inStock != null)
+					{
+						inStock.Qty += prod.Qty;
+						var fromStock = Db.Stocks
+							.Where(s => s.Store_Id == fromStore.Store_Id
+										&& s.Prod_Id == prod.ProdId)
+							.FirstOrDefault();
+						fromStock.Qty -= prod.Qty;
+						Db.SaveChanges();
+					}
+					else
+					{
+						var fromStock = Db.Stocks
+							.Where(s => s.Store_Id == fromStore.Store_Id
+										&& s.Prod_Id == prod.ProdId)
+							.FirstOrDefault();
+						fromStock.Qty -= prod.Qty;
+						Stock newStock = new Stock()
+						{
+							Store_Id = toStore.Store_Id,
+							Prod_Id = prod.ProdId,
+							Qty = prod.Qty
+						};
+						Db.Stocks.Add(newStock);
+					}
+					Db.SaveChanges();
+				}
+			}
+		}
+
 		#endregion
 
 	}

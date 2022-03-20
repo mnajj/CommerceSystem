@@ -125,10 +125,10 @@ namespace CommerceSystem.Forms.Dialogs
 					Db.Dismissals.Add(newDism);
 
 					// Add Products
-					int dismId = Db.Dismissals
-						.Select(s => s.Dism_Id)
-						.Max();
-					this.Products.ToList().ForEach(p => p.Dism_Id = dismId);
+					int? dismId = Db.Dismissals
+						.Max(s => (int?)s.Dism_Id);
+					int id = dismId ?? default(int);
+					this.Products.ToList().ForEach(p => p.Dism_Id = id);
 					foreach (var product in Products)
 					{
 						var dism_prod = Db.Dism_Prod
@@ -137,6 +137,28 @@ namespace CommerceSystem.Forms.Dialogs
 						if (dism_prod == null)
 						{
 							Db.Dism_Prod.Add(product);
+							Stock stock = null;
+							foreach (var s in Db.Stocks)
+							{
+								if (s.Prod_Id == s.Prod_Id && s.Store_Id == storeId)
+								{
+									stock = s;
+								}
+							}
+							if (stock != null)
+							{
+								stock.Qty -= product.Qty;
+							}
+							else
+							{
+								Stock newStock = new Stock()
+								{
+									Prod_Id = product.Prod_Id,
+									Store_Id = (int) product.Dismissal.Store_Id,
+									Qty = product.Qty
+								};
+								Db.Stocks.Add(newStock);
+							}
 						}
 					}
 					Db.SaveChanges();

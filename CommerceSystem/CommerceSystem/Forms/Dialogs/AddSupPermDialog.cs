@@ -106,7 +106,7 @@ namespace CommerceSystem.Forms.Dialogs
 		private void SubmitSupPermbtn_Click(object sender, EventArgs e)
 		{
 			if(
-					StoresNamesCombo.Text == String.Empty
+					StoresNamesCombo.Text != String.Empty
 				&& SupPermDateFld.Text != String.Empty
 				&& SuppliersNamesCombo.Text != String.Empty
 				)
@@ -132,18 +132,38 @@ namespace CommerceSystem.Forms.Dialogs
 					Db.SuppliePermissions.Add(newSupPerm);
 
 					// Add Products
-					int supPermId = Db.SuppliePermissions
-						.Select(s => s.SupPerm_Id)
-						.Max();
-					this.Products.ToList().ForEach(p => p.SupPerm_Id = supPermId);
+					int? supPermId = Db.SuppliePermissions
+						.Max(s => (int?)s.SupPerm_Id);
+					int PermId = supPermId ?? default(int); ;
+					this.Products.ToList().ForEach(p => p.SupPerm_Id = PermId);
 					foreach (var prod in Products)
 					{
 						var sup_prod = Db.Supplied_Prod
-							.Where(s => s.Prod_Id == prod.Prod_Id && s.SupPerm_Id == prod.SupPerm_Id)
+							.Where(s => s.Prod_Id == prod.Prod_Id && s.SupPerm_Id == storeId)
 							.FirstOrDefault();
 						if(sup_prod == null)
 						{
 							Db.Supplied_Prod.Add(prod);
+							Stock stock = null;
+							foreach(var s in Db.Stocks)
+							{
+								if (s.Prod_Id == prod.Prod_Id && s.Store_Id == storeId)
+								{
+									stock = s;
+								}
+							}
+							if (stock != null)
+							{
+								stock.Qty += prod.Qty;
+							}
+							else
+							{
+								Stock newStock = new Stock();
+								newStock.Prod_Id = prod.Prod_Id;
+								newStock.Store_Id = (int) storeId;
+								newStock.Qty = prod.Qty;
+								Db.Stocks.Add(newStock);
+							}
 						}
 					}
 					Db.SaveChanges();
