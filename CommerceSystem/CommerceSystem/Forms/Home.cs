@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing;
 using CommerceSystem.ClassLib;
+using System.Data.Entity;
 
 namespace CommerceSystem
 {
@@ -392,7 +393,6 @@ namespace CommerceSystem
 		}
 
 		#endregion
-
 
 		#region Suppliers
 		private void DisplaySuppliersData()
@@ -891,8 +891,8 @@ namespace CommerceSystem
 				if(FromStoresCombo.Text != ToStoresCombo.Text)
 				{
 					TransProdsToStore();
-					CreateSupPermForTrans();
-					Clear
+					ClearAllFields();
+					MessageBox.Show($"Products Transferred Successfully");
 				}
 				else
 				{
@@ -905,9 +905,14 @@ namespace CommerceSystem
 			}
 		}
 
-		private void CreateSupPermForTrans()
+		private void ClearAllFields()
 		{
-			throw new NotImplementedException();
+			TransProductsList.Items.Clear();
+			FromStoresCombo.Text = 
+				ToStoresCombo.Text =
+				ProdQtyF.Text =
+				ProdExpiryFld.Text =
+				TransSupCombo.Text = String.Empty;
 		}
 
 		private void DisplayTransComboBoxData()
@@ -954,33 +959,30 @@ namespace CommerceSystem
 					.Where(
 								p => p.Prod_Id == prod.ProdId
 							&& p.Expiry == prod.Exp
-							&& p.Production_Date == prod.ProdDate
+							&& DbFunctions.TruncateTime(p.Production_Date) == prod.ProdDate.Date
 							&& p.SuppliePermission.Store_Id == fromStore.Store_Id
 							&& p.SuppliePermission.Sup_Id == prod.Supplier.Sup_Id
 							)
 					.FirstOrDefault();
 				if (fromProd != null)
 				{
-					var inStock = Db.Stocks
+					var toStock = Db.Stocks
 						.Where(s => s.Store_Id == toStore.Store_Id
 									&& s.Prod_Id == prod.ProdId)
 						.FirstOrDefault();
-					if (inStock != null)
+					var fromStock = Db.Stocks
+						.Where(s => s.Store_Id == fromStore.Store_Id
+									&& s.Prod_Id == prod.ProdId)
+						.FirstOrDefault();
+					if (toStock != null)
 					{
-						inStock.Qty += prod.Qty;
-						var fromStock = Db.Stocks
-							.Where(s => s.Store_Id == fromStore.Store_Id
-										&& s.Prod_Id == prod.ProdId)
-							.FirstOrDefault();
+						toStock.Qty += prod.Qty;
 						fromStock.Qty -= prod.Qty;
 						Db.SaveChanges();
+						CreateSupPermForTrans(prod, toStore, fromStore);
 					}
 					else
 					{
-						var fromStock = Db.Stocks
-							.Where(s => s.Store_Id == fromStore.Store_Id
-										&& s.Prod_Id == prod.ProdId)
-							.FirstOrDefault();
 						fromStock.Qty -= prod.Qty;
 						Stock newStock = new Stock()
 						{
@@ -989,13 +991,49 @@ namespace CommerceSystem
 							Qty = prod.Qty
 						};
 						Db.Stocks.Add(newStock);
+						Db.SaveChanges();
+						CreateSupPermForTrans(prod, toStore, fromStore);
 					}
-					Db.SaveChanges();
 				}
 			}
 		}
 
-		#endregion
+		private void CreateSupPermForTrans(TransProduct prod, Store toStore, Store fromStore)
+		{
+			var fromSupPermProd = Db.Supplied_Prod
+				.Where(s => s.SuppliePermission.Store_Id == fromStore.Store_Id
+				&& s.Prod_Id == prod.ProdId
+				&& s.Expiry == prod.Exp
+				&& DbFunctions.TruncateTime(s.Production_Date) == prod.ProdDate.Date)
+				.FirstOrDefault();
+			fromSupPermProd.Qty -= prod.Qty;
+			SuppliePermission newSupPerm = new SuppliePermission()
+			{
+				Store_Id = toStore.Store_Id,
+				Sup_Id = prod.Supplier.Sup_Id,
+				SupPerm_Date = DateTime.Now
+			};
+			Db.SuppliePermissions.Add(newSupPerm);
+			Db.SaveChanges();
+			AddProductToSupllied_Prod(prod);
+		}
 
+		private void AddProductToSupllied_Prod(TransProduct prod)
+		{
+			Supplied_Prod newSupplied_Prod = new Supplied_Prod()
+			{
+				Prod_Id = prod.ProdId,
+				SupPerm_Id = Db.SuppliePermissions
+				.Select(x => x.SupPerm_Id)
+				.Max(),
+				Production_Date = prod.ProdDate,
+				Expiry = prod.Exp,
+				Qty = prod.Qty
+			};
+			Db.Supplied_Prod.Add(newSupplied_Prod);
+			Db.SaveChanges();
+		}
+
+		#endregion
 	}
 }
