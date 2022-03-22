@@ -126,11 +126,22 @@ namespace CommerceSystem
 				}
 				Db.SaveChanges();
 				DisplayStoresData();
+				ClearStoreInputFields();
 			}
 			else
 			{
 				MessageBox.Show("Some Fields is empty!");
 			}
+		}
+
+		private void ClearStoreInputFields()
+		{
+			StoreIdFld.Text =
+				StorenameFld.Text =
+				StorePhoneFld.Text =
+				StoreMailFld.Text =
+				StoreAddrsFld.Text =
+				ManagerCombo.Text = String.Empty;
 		}
 
 		private void StoreList_Click(object sender, EventArgs e)
@@ -158,6 +169,7 @@ namespace CommerceSystem
 				Db.SaveChanges();
 				DisplayStoresData();
 				ClearStoreFields();
+				ClearStoreInputFields();
 			}
 			else
 			{
@@ -197,6 +209,7 @@ namespace CommerceSystem
 				store.Manager_Id =	 int.Parse(ManagerCombo.Text);
 				Db.SaveChanges();
 				DisplayStoresData();
+				ClearStoreInputFields();
 			}
 			else
 			{
@@ -441,6 +454,7 @@ namespace CommerceSystem
 				Db.Suppliers.Add(sup);
 				Db.SaveChanges();
 				DisplaySuppliersData();
+				ClearSupFields();
 			}
 			else
 			{

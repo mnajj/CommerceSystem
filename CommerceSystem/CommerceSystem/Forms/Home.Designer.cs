@@ -30,6 +30,7 @@
 		{
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
 			this.Update = new System.Windows.Forms.Button();
@@ -106,6 +107,8 @@
 			this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPage5 = new System.Windows.Forms.TabPage();
+			this.label13 = new System.Windows.Forms.Label();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.AddSupPerm = new System.Windows.Forms.Button();
 			this.SupPermList = new System.Windows.Forms.ListView();
 			this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -114,6 +117,8 @@
 			this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPage6 = new System.Windows.Forms.TabPage();
+			this.label14 = new System.Windows.Forms.Label();
+			this.pictureBox4 = new System.Windows.Forms.PictureBox();
 			this.AddDismBtn = new System.Windows.Forms.Button();
 			this.DismList = new System.Windows.Forms.ListView();
 			this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -121,39 +126,35 @@
 			this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.tabPage8 = new System.Windows.Forms.TabPage();
+			this.TransProductsList = new System.Windows.Forms.ListBox();
+			this.label29 = new System.Windows.Forms.Label();
+			this.ToStoresCombo = new System.Windows.Forms.ComboBox();
+			this.TransBtn = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.label26 = new System.Windows.Forms.Label();
+			this.TransSupCombo = new System.Windows.Forms.ComboBox();
+			this.ProdExpiryFld = new System.Windows.Forms.TextBox();
+			this.TransAddProductBtn = new System.Windows.Forms.Button();
+			this.ProdProddateFld = new System.Windows.Forms.DateTimePicker();
+			this.label15 = new System.Windows.Forms.Label();
+			this.ProdQtyF = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label16 = new System.Windows.Forms.Label();
+			this.ProdNamesCombo = new System.Windows.Forms.ComboBox();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label28 = new System.Windows.Forms.Label();
+			this.FromStoresCombo = new System.Windows.Forms.ComboBox();
 			this.tabPage7 = new System.Windows.Forms.TabPage();
 			this.ExpirationBtn = new System.Windows.Forms.Button();
 			this.PassedProdBtn = new System.Windows.Forms.Button();
 			this.ProdPeriodBtn = new System.Windows.Forms.Button();
 			this.GenerateStoresReportBtn = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.pictureBox4 = new System.Windows.Forms.PictureBox();
-			this.tabPage8 = new System.Windows.Forms.TabPage();
-			this.TransBtn = new System.Windows.Forms.Button();
-			this.TransAddProductBtn = new System.Windows.Forms.Button();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.ProdQtyF = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.ProdNamesCombo = new System.Windows.Forms.ComboBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.label28 = new System.Windows.Forms.Label();
-			this.FromStoresCombo = new System.Windows.Forms.ComboBox();
-			this.label29 = new System.Windows.Forms.Label();
-			this.ToStoresCombo = new System.Windows.Forms.ComboBox();
-			this.TransProductsList = new System.Windows.Forms.ListBox();
-			this.ProdExpiryFld = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
-			this.ProdProddateFld = new System.Windows.Forms.DateTimePicker();
-			this.label16 = new System.Windows.Forms.Label();
-			this.TransSupCombo = new System.Windows.Forms.ComboBox();
-			this.label26 = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tabPage2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tabPage3.SuspendLayout();
@@ -164,14 +165,13 @@
 			this.tabPage4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.tabPage5.SuspendLayout();
-			this.tabPage6.SuspendLayout();
-			this.tabPage7.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.tabPage6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			this.tabPage8.SuspendLayout();
 			this.groupBox4.SuspendLayout();
+			this.tabPage7.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -202,6 +202,16 @@
 			this.tabPage1.Size = new System.Drawing.Size(789, 424);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Home";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::CommerceSystem.Properties.Resources.aef8f9b7b9e1654dd9791c380765078e;
+			this.pictureBox1.Location = new System.Drawing.Point(-205, -22);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(1153, 504);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// tabPage2
 			// 
@@ -837,7 +847,7 @@
 			this.DeleteSupBtn.BackColor = System.Drawing.Color.Crimson;
 			this.DeleteSupBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.DeleteSupBtn.ForeColor = System.Drawing.Color.White;
-			this.DeleteSupBtn.Location = new System.Drawing.Point(63, 350);
+			this.DeleteSupBtn.Location = new System.Drawing.Point(63, 362);
 			this.DeleteSupBtn.Name = "DeleteSupBtn";
 			this.DeleteSupBtn.Size = new System.Drawing.Size(131, 35);
 			this.DeleteSupBtn.TabIndex = 26;
@@ -850,7 +860,7 @@
 			this.UpdateSupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(181)))), ((int)(((byte)(80)))));
 			this.UpdateSupBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.UpdateSupBtn.ForeColor = System.Drawing.Color.White;
-			this.UpdateSupBtn.Location = new System.Drawing.Point(63, 309);
+			this.UpdateSupBtn.Location = new System.Drawing.Point(63, 321);
 			this.UpdateSupBtn.Name = "UpdateSupBtn";
 			this.UpdateSupBtn.Size = new System.Drawing.Size(131, 35);
 			this.UpdateSupBtn.TabIndex = 25;
@@ -863,7 +873,7 @@
 			this.AddSupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
 			this.AddSupBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.AddSupBtn.ForeColor = System.Drawing.Color.White;
-			this.AddSupBtn.Location = new System.Drawing.Point(63, 271);
+			this.AddSupBtn.Location = new System.Drawing.Point(63, 283);
 			this.AddSupBtn.Name = "AddSupBtn";
 			this.AddSupBtn.Size = new System.Drawing.Size(131, 35);
 			this.AddSupBtn.TabIndex = 23;
@@ -940,6 +950,25 @@
 			this.tabPage5.Text = "Supplies 📥";
 			this.tabPage5.UseVisualStyleBackColor = true;
 			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(46, 396);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(231, 13);
+			this.label13.TabIndex = 31;
+			this.label13.Text = "Double-Click to Show, Update or Delete Recod";
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
+			this.pictureBox3.Location = new System.Drawing.Point(5, 384);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox3.TabIndex = 30;
+			this.pictureBox3.TabStop = false;
+			// 
 			// AddSupPerm
 			// 
 			this.AddSupPerm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
@@ -1011,6 +1040,25 @@
 			this.tabPage6.Text = "Dismissal 🚚";
 			this.tabPage6.UseVisualStyleBackColor = true;
 			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(45, 397);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(231, 13);
+			this.label14.TabIndex = 33;
+			this.label14.Text = "Double-Click to Show, Update or Delete Recod";
+			// 
+			// pictureBox4
+			// 
+			this.pictureBox4.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
+			this.pictureBox4.Location = new System.Drawing.Point(4, 385);
+			this.pictureBox4.Name = "pictureBox4";
+			this.pictureBox4.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox4.TabIndex = 32;
+			this.pictureBox4.TabStop = false;
+			// 
 			// AddDismBtn
 			// 
 			this.AddDismBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
@@ -1068,6 +1116,200 @@
 			this.columnHeader25.Text = "Product - Qty";
 			this.columnHeader25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.columnHeader25.Width = 200;
+			// 
+			// tabPage8
+			// 
+			this.tabPage8.BackColor = System.Drawing.Color.White;
+			this.tabPage8.Controls.Add(this.TransProductsList);
+			this.tabPage8.Controls.Add(this.label29);
+			this.tabPage8.Controls.Add(this.ToStoresCombo);
+			this.tabPage8.Controls.Add(this.TransBtn);
+			this.tabPage8.Controls.Add(this.groupBox4);
+			this.tabPage8.Controls.Add(this.label28);
+			this.tabPage8.Controls.Add(this.FromStoresCombo);
+			this.tabPage8.Location = new System.Drawing.Point(4, 22);
+			this.tabPage8.Name = "tabPage8";
+			this.tabPage8.Size = new System.Drawing.Size(789, 424);
+			this.tabPage8.TabIndex = 7;
+			this.tabPage8.Text = "Transfer Items 🔖";
+			// 
+			// TransProductsList
+			// 
+			this.TransProductsList.FormattingEnabled = true;
+			this.TransProductsList.Location = new System.Drawing.Point(468, 3);
+			this.TransProductsList.Name = "TransProductsList";
+			this.TransProductsList.Size = new System.Drawing.Size(318, 420);
+			this.TransProductsList.TabIndex = 35;
+			// 
+			// label29
+			// 
+			this.label29.AutoSize = true;
+			this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label29.ForeColor = System.Drawing.Color.Black;
+			this.label29.Location = new System.Drawing.Point(47, 115);
+			this.label29.Name = "label29";
+			this.label29.Size = new System.Drawing.Size(28, 19);
+			this.label29.TabIndex = 33;
+			this.label29.Text = "To:";
+			// 
+			// ToStoresCombo
+			// 
+			this.ToStoresCombo.FormattingEnabled = true;
+			this.ToStoresCombo.Location = new System.Drawing.Point(105, 116);
+			this.ToStoresCombo.Name = "ToStoresCombo";
+			this.ToStoresCombo.Size = new System.Drawing.Size(311, 21);
+			this.ToStoresCombo.TabIndex = 34;
+			// 
+			// TransBtn
+			// 
+			this.TransBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
+			this.TransBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TransBtn.ForeColor = System.Drawing.Color.White;
+			this.TransBtn.Location = new System.Drawing.Point(47, 335);
+			this.TransBtn.Name = "TransBtn";
+			this.TransBtn.Size = new System.Drawing.Size(369, 32);
+			this.TransBtn.TabIndex = 32;
+			this.TransBtn.Text = "Transfer";
+			this.TransBtn.UseVisualStyleBackColor = false;
+			this.TransBtn.Click += new System.EventHandler(this.TransBtn_Click);
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
+			this.groupBox4.Controls.Add(this.label26);
+			this.groupBox4.Controls.Add(this.TransSupCombo);
+			this.groupBox4.Controls.Add(this.ProdExpiryFld);
+			this.groupBox4.Controls.Add(this.TransAddProductBtn);
+			this.groupBox4.Controls.Add(this.ProdProddateFld);
+			this.groupBox4.Controls.Add(this.label15);
+			this.groupBox4.Controls.Add(this.ProdQtyF);
+			this.groupBox4.Controls.Add(this.label17);
+			this.groupBox4.Controls.Add(this.label16);
+			this.groupBox4.Controls.Add(this.ProdNamesCombo);
+			this.groupBox4.Controls.Add(this.label18);
+			this.groupBox4.Location = new System.Drawing.Point(51, 143);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(365, 186);
+			this.groupBox4.TabIndex = 31;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Products";
+			// 
+			// label26
+			// 
+			this.label26.AutoSize = true;
+			this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label26.Location = new System.Drawing.Point(28, 128);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(59, 19);
+			this.label26.TabIndex = 41;
+			this.label26.Text = "Supplier";
+			// 
+			// TransSupCombo
+			// 
+			this.TransSupCombo.FormattingEnabled = true;
+			this.TransSupCombo.Location = new System.Drawing.Point(121, 126);
+			this.TransSupCombo.Name = "TransSupCombo";
+			this.TransSupCombo.Size = new System.Drawing.Size(238, 21);
+			this.TransSupCombo.TabIndex = 40;
+			// 
+			// ProdExpiryFld
+			// 
+			this.ProdExpiryFld.Location = new System.Drawing.Point(121, 100);
+			this.ProdExpiryFld.Name = "ProdExpiryFld";
+			this.ProdExpiryFld.Size = new System.Drawing.Size(238, 20);
+			this.ProdExpiryFld.TabIndex = 39;
+			// 
+			// TransAddProductBtn
+			// 
+			this.TransAddProductBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
+			this.TransAddProductBtn.Location = new System.Drawing.Point(10, 157);
+			this.TransAddProductBtn.Name = "TransAddProductBtn";
+			this.TransAddProductBtn.Size = new System.Drawing.Size(349, 23);
+			this.TransAddProductBtn.TabIndex = 23;
+			this.TransAddProductBtn.Text = "Add Product";
+			this.TransAddProductBtn.UseVisualStyleBackColor = false;
+			this.TransAddProductBtn.Click += new System.EventHandler(this.TransAddProductBtn_Click);
+			// 
+			// ProdProddateFld
+			// 
+			this.ProdProddateFld.Location = new System.Drawing.Point(121, 74);
+			this.ProdProddateFld.Name = "ProdProddateFld";
+			this.ProdProddateFld.Size = new System.Drawing.Size(238, 20);
+			this.ProdProddateFld.TabIndex = 37;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label15.Location = new System.Drawing.Point(7, 99);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(108, 19);
+			this.label15.TabIndex = 38;
+			this.label15.Text = "Expiry (Months)";
+			// 
+			// ProdQtyF
+			// 
+			this.ProdQtyF.Location = new System.Drawing.Point(121, 48);
+			this.ProdQtyF.Name = "ProdQtyF";
+			this.ProdQtyF.Size = new System.Drawing.Size(238, 20);
+			this.ProdQtyF.TabIndex = 20;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label17.Location = new System.Drawing.Point(28, 47);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(60, 19);
+			this.label17.TabIndex = 19;
+			this.label17.Text = "Quantity";
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label16.Location = new System.Drawing.Point(7, 74);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(108, 19);
+			this.label16.TabIndex = 36;
+			this.label16.Text = "Production Date";
+			// 
+			// ProdNamesCombo
+			// 
+			this.ProdNamesCombo.FormattingEnabled = true;
+			this.ProdNamesCombo.Location = new System.Drawing.Point(121, 21);
+			this.ProdNamesCombo.Name = "ProdNamesCombo";
+			this.ProdNamesCombo.Size = new System.Drawing.Size(238, 21);
+			this.ProdNamesCombo.TabIndex = 18;
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label18.Location = new System.Drawing.Point(17, 20);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(98, 19);
+			this.label18.TabIndex = 17;
+			this.label18.Text = "Product Name";
+			// 
+			// label28
+			// 
+			this.label28.AutoSize = true;
+			this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label28.ForeColor = System.Drawing.Color.Black;
+			this.label28.Location = new System.Drawing.Point(43, 88);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(45, 19);
+			this.label28.TabIndex = 25;
+			this.label28.Text = "From:";
+			// 
+			// FromStoresCombo
+			// 
+			this.FromStoresCombo.FormattingEnabled = true;
+			this.FromStoresCombo.Location = new System.Drawing.Point(105, 89);
+			this.FromStoresCombo.Name = "FromStoresCombo";
+			this.FromStoresCombo.Size = new System.Drawing.Size(311, 21);
+			this.FromStoresCombo.TabIndex = 26;
 			// 
 			// tabPage7
 			// 
@@ -1139,26 +1381,6 @@
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = global::CommerceSystem.Properties.Resources.aef8f9b7b9e1654dd9791c380765078e;
-			this.pictureBox1.Location = new System.Drawing.Point(-205, -22);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(1153, 504);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
-			this.pictureBox3.Location = new System.Drawing.Point(5, 384);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(35, 35);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox3.TabIndex = 30;
-			this.pictureBox3.TabStop = false;
-			// 
 			// pictureBox2
 			// 
 			this.pictureBox2.Image = global::CommerceSystem.Properties.Resources._21a36d7399ae3f5f361c64493dcb3e97;
@@ -1168,228 +1390,6 @@
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 2;
 			this.pictureBox2.TabStop = false;
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(46, 396);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(231, 13);
-			this.label13.TabIndex = 31;
-			this.label13.Text = "Double-Click to Show, Update or Delete Recod";
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(45, 397);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(231, 13);
-			this.label14.TabIndex = 33;
-			this.label14.Text = "Double-Click to Show, Update or Delete Recod";
-			// 
-			// pictureBox4
-			// 
-			this.pictureBox4.Image = global::CommerceSystem.Properties.Resources._74_745309_mouse_double_click_mouse_double_click_icon;
-			this.pictureBox4.Location = new System.Drawing.Point(4, 385);
-			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(35, 35);
-			this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox4.TabIndex = 32;
-			this.pictureBox4.TabStop = false;
-			// 
-			// tabPage8
-			// 
-			this.tabPage8.BackColor = System.Drawing.Color.White;
-			this.tabPage8.Controls.Add(this.TransProductsList);
-			this.tabPage8.Controls.Add(this.label29);
-			this.tabPage8.Controls.Add(this.ToStoresCombo);
-			this.tabPage8.Controls.Add(this.TransBtn);
-			this.tabPage8.Controls.Add(this.groupBox4);
-			this.tabPage8.Controls.Add(this.label28);
-			this.tabPage8.Controls.Add(this.FromStoresCombo);
-			this.tabPage8.Location = new System.Drawing.Point(4, 22);
-			this.tabPage8.Name = "tabPage8";
-			this.tabPage8.Size = new System.Drawing.Size(789, 424);
-			this.tabPage8.TabIndex = 7;
-			this.tabPage8.Text = "Transfer Items 🔖";
-			// 
-			// TransBtn
-			// 
-			this.TransBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(146)))), ((int)(((byte)(99)))));
-			this.TransBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TransBtn.ForeColor = System.Drawing.Color.White;
-			this.TransBtn.Location = new System.Drawing.Point(76, 341);
-			this.TransBtn.Name = "TransBtn";
-			this.TransBtn.Size = new System.Drawing.Size(301, 32);
-			this.TransBtn.TabIndex = 32;
-			this.TransBtn.Text = "Transfer";
-			this.TransBtn.UseVisualStyleBackColor = false;
-			this.TransBtn.Click += new System.EventHandler(this.TransBtn_Click);
-			// 
-			// TransAddProductBtn
-			// 
-			this.TransAddProductBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(180)))), ((int)(((byte)(83)))));
-			this.TransAddProductBtn.Location = new System.Drawing.Point(10, 157);
-			this.TransAddProductBtn.Name = "TransAddProductBtn";
-			this.TransAddProductBtn.Size = new System.Drawing.Size(281, 23);
-			this.TransAddProductBtn.TabIndex = 23;
-			this.TransAddProductBtn.Text = "Add Product";
-			this.TransAddProductBtn.UseVisualStyleBackColor = false;
-			this.TransAddProductBtn.Click += new System.EventHandler(this.TransAddProductBtn_Click);
-			// 
-			// groupBox4
-			// 
-			this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
-			this.groupBox4.Controls.Add(this.label26);
-			this.groupBox4.Controls.Add(this.TransSupCombo);
-			this.groupBox4.Controls.Add(this.ProdExpiryFld);
-			this.groupBox4.Controls.Add(this.TransAddProductBtn);
-			this.groupBox4.Controls.Add(this.ProdProddateFld);
-			this.groupBox4.Controls.Add(this.label15);
-			this.groupBox4.Controls.Add(this.ProdQtyF);
-			this.groupBox4.Controls.Add(this.label17);
-			this.groupBox4.Controls.Add(this.label16);
-			this.groupBox4.Controls.Add(this.ProdNamesCombo);
-			this.groupBox4.Controls.Add(this.label18);
-			this.groupBox4.Location = new System.Drawing.Point(80, 149);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(297, 186);
-			this.groupBox4.TabIndex = 31;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "Products";
-			// 
-			// ProdQtyF
-			// 
-			this.ProdQtyF.Location = new System.Drawing.Point(121, 48);
-			this.ProdQtyF.Name = "ProdQtyF";
-			this.ProdQtyF.Size = new System.Drawing.Size(170, 20);
-			this.ProdQtyF.TabIndex = 20;
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label17.Location = new System.Drawing.Point(28, 47);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(60, 19);
-			this.label17.TabIndex = 19;
-			this.label17.Text = "Quantity";
-			// 
-			// ProdNamesCombo
-			// 
-			this.ProdNamesCombo.FormattingEnabled = true;
-			this.ProdNamesCombo.Location = new System.Drawing.Point(121, 21);
-			this.ProdNamesCombo.Name = "ProdNamesCombo";
-			this.ProdNamesCombo.Size = new System.Drawing.Size(170, 21);
-			this.ProdNamesCombo.TabIndex = 18;
-			// 
-			// label18
-			// 
-			this.label18.AutoSize = true;
-			this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label18.Location = new System.Drawing.Point(17, 20);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(98, 19);
-			this.label18.TabIndex = 17;
-			this.label18.Text = "Product Name";
-			// 
-			// label28
-			// 
-			this.label28.AutoSize = true;
-			this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label28.ForeColor = System.Drawing.Color.Black;
-			this.label28.Location = new System.Drawing.Point(72, 94);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(45, 19);
-			this.label28.TabIndex = 25;
-			this.label28.Text = "From:";
-			// 
-			// FromStoresCombo
-			// 
-			this.FromStoresCombo.FormattingEnabled = true;
-			this.FromStoresCombo.Location = new System.Drawing.Point(134, 95);
-			this.FromStoresCombo.Name = "FromStoresCombo";
-			this.FromStoresCombo.Size = new System.Drawing.Size(243, 21);
-			this.FromStoresCombo.TabIndex = 26;
-			// 
-			// label29
-			// 
-			this.label29.AutoSize = true;
-			this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label29.ForeColor = System.Drawing.Color.Black;
-			this.label29.Location = new System.Drawing.Point(76, 121);
-			this.label29.Name = "label29";
-			this.label29.Size = new System.Drawing.Size(28, 19);
-			this.label29.TabIndex = 33;
-			this.label29.Text = "To:";
-			// 
-			// ToStoresCombo
-			// 
-			this.ToStoresCombo.FormattingEnabled = true;
-			this.ToStoresCombo.Location = new System.Drawing.Point(134, 122);
-			this.ToStoresCombo.Name = "ToStoresCombo";
-			this.ToStoresCombo.Size = new System.Drawing.Size(243, 21);
-			this.ToStoresCombo.TabIndex = 34;
-			// 
-			// TransProductsList
-			// 
-			this.TransProductsList.FormattingEnabled = true;
-			this.TransProductsList.Location = new System.Drawing.Point(468, 3);
-			this.TransProductsList.Name = "TransProductsList";
-			this.TransProductsList.Size = new System.Drawing.Size(318, 420);
-			this.TransProductsList.TabIndex = 35;
-			// 
-			// ProdExpiryFld
-			// 
-			this.ProdExpiryFld.Location = new System.Drawing.Point(121, 100);
-			this.ProdExpiryFld.Name = "ProdExpiryFld";
-			this.ProdExpiryFld.Size = new System.Drawing.Size(170, 20);
-			this.ProdExpiryFld.TabIndex = 39;
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label15.Location = new System.Drawing.Point(7, 99);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(108, 19);
-			this.label15.TabIndex = 38;
-			this.label15.Text = "Expiry (Months)";
-			// 
-			// ProdProddateFld
-			// 
-			this.ProdProddateFld.Location = new System.Drawing.Point(121, 74);
-			this.ProdProddateFld.Name = "ProdProddateFld";
-			this.ProdProddateFld.Size = new System.Drawing.Size(170, 20);
-			this.ProdProddateFld.TabIndex = 37;
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label16.Location = new System.Drawing.Point(7, 74);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(108, 19);
-			this.label16.TabIndex = 36;
-			this.label16.Text = "Production Date";
-			// 
-			// TransSupCombo
-			// 
-			this.TransSupCombo.FormattingEnabled = true;
-			this.TransSupCombo.Location = new System.Drawing.Point(121, 126);
-			this.TransSupCombo.Name = "TransSupCombo";
-			this.TransSupCombo.Size = new System.Drawing.Size(170, 21);
-			this.TransSupCombo.TabIndex = 40;
-			// 
-			// label26
-			// 
-			this.label26.AutoSize = true;
-			this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label26.Location = new System.Drawing.Point(28, 128);
-			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(59, 19);
-			this.label26.TabIndex = 41;
-			this.label26.Text = "Supplier";
 			// 
 			// Home
 			// 
@@ -1401,6 +1401,7 @@
 			this.Text = "Home";
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.tabPage2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -1418,17 +1419,16 @@
 			this.groupBox3.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
 			this.tabPage5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.tabPage6.ResumeLayout(false);
 			this.tabPage6.PerformLayout();
-			this.tabPage7.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			this.tabPage8.ResumeLayout(false);
 			this.tabPage8.PerformLayout();
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox4.PerformLayout();
+			this.tabPage7.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 
 		}
