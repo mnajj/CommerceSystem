@@ -4,8 +4,8 @@ A project submitted in partial fulfillment of the requirement to complete LINQ a
 1. Add, update and delete warehouse, stock item, supplier, staff member and customer.
 2. Add, update and delete supply and dismissal permissions.
 3. Generate reports for:
-  - A warehouse.
-  - A stock item.
-  - A movement of items in a specific period.
-  - Items that have passed a period in the warehouse.
-  - Items that are close to expiration.
+    - A warehouse.
+    - A stock item.
+    - A movement of items in a specific period.
+    - Items that have passed a period in the warehouse.
+    - Items that are close to expiration.
